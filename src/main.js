@@ -154,15 +154,15 @@ var seed = minus_node(
             int_node(5)
         )
     ), if_node(
-        int_node(16),
-        int_node(26),
+        int_node(10),
+        int_node(20),
         toggle_node(false)
     ));
 
-var seed = minus_node(
-    paramaterized_bud(bud_fn),
-    paramaterized_bud(bud_fn)
-);
+// var seed = minus_node(
+//     paramaterized_bud(bud_fn),
+//     paramaterized_bud(bud_fn)
+// );
 
 // var seed = bud_node(6);
 
