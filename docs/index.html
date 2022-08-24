@@ -9,11 +9,19 @@
 
 <style>
   * {
-    background-color: #d6eaf8
+    padding: 0;
+    margin: 0;
+    border: 0;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
   }
 
-  .centered {
+  .centered-container {
     text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 
   .rcorners {
@@ -23,42 +31,124 @@
     height: 250px;
   }
 
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    background-color: whitesmoke;
+    padding: 0;
+    margin-bottom: 50px;
+  }
+
+  #header {
+    display: block;
+    background: #359f77;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    flex: 0 0 auto;
+    float: left;
+  }
+
+  #title-card {
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 60em;
+    color: whitesmoke;
+  }
+
+  #footer {
+    bottom: 0;
+    position: fixed;
+    background-color: #6e6e6e;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    height: 50px;
+    padding: 0;
+  }
+
+  #footer a {
+    color: whitesmoke;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  #bottom-info {
+    margin: 0 auto;
+    padding: 1em;
+    max-width: 60em;
+    color: whitesmoke;
+  }
+
+  nav {
+    font-size: 1.5em;
+    text-align: center;
+  }
+
   h1 {
-    font-size: 60px;
+    font-size: 4rem;
+    margin-bottom: 0.5em;
   }
 
   h2 {
-    font-size: 32px;
+    font-size: 2rem;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
   }
 
   span {
-    font-size: 24px;
+    font-size: 1.5rem;
   }
 
   a {
-    font-size: 24px;
+    font-size: 1.5rem;
+  }
+
+  #blurb {
+    max-width: 35em;
+    padding-left: 2em;
+    padding-right: 2em;
   }
 </style>
 
 <body>
-  <div class="centered">
-    <h1>Kaden.dev</h1>
-    <span>I like building things, solving problems, and building things that solve problems.</span>
-    <br>
-    <img class="rcorners centered" src="resources/kaden_face.jpeg" alt="Kaden's Face">
-    <br>
-    <a href="https://www.linkedin.com/in/kaden-taylor/">Linkedin</a>
-    <span> | </span>
-    <a href="https://github.com/kadenjtaylor">Github</a>
-    <span> | </span>
-    <a href="resources/kaden_taylor_resume.pdf" download="kaden_taylor_resume.pdf">Resume</a>
+  <div id="header">
+    <div id="title-card">
+      <h1>Kaden.dev</h1>
+      <span>I like building things, solving problems, and building things that solve problems.</span>
+    </div>
   </div>
-  <br>
-  <br>
-  <br>
-  <div class="centered">
-    <h2>Demos:</h2>
+  <div class="centered-container">
+    <h2>Here's what I look like:</h2>
+    <img class="rcorners" src="resources/kaden_face.jpeg" alt="Kaden's Face">
+  </div>
+  <div class="centered-container">
+    <h2>Here's what I'm about:</h2>
+    <span id="blurb">
+      I love domain modeling, functional programming, and making code understandable. I'm on the more extroverted side
+      for a software developer, and I really like getting the chance to understand a domain well enough to explain it to
+      anyone. I believe in collaborating to create the right solution the first time. Recently I've been working in
+      Scala, and that's been an absolute blast.
+    </span>
+    <br>
+    <span>Right now I'm looking for a place to solve fun problems with great
+      people.</span>
+    <span>If you think that sounds like your team...</span>
+    <a href="https://www.linkedin.com/in/kaden-taylor/">reach out!</a>
+  </div>
+  <div class="centered-container">
+    <h2>Here are my links:</h2>
+    <nav>
+      <a href="https://www.linkedin.com/in/kaden-taylor/">Linkedin</a> |
+      <a href="https://github.com/kadenjtaylor">Github</a> |
+      <a href="resources/kaden_taylor_resume.pdf" download="kaden_taylor_resume.pdf">Resume</a>
+    </nav>
+  </div>
+  <div class="centered-container">
+    <h2>Here's some stuff I'm working on:</h2>
     <a href="pages/demo.html">Algebraic Tree-Rewriting</a>
+    <br>
+    <span>(more incoming when I get around to updating this list)</span>
   </div>
 </body>
 
