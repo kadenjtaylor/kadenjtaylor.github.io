@@ -1,0 +1,16 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>Slider</title>
+<link href=./index.css integrity=sha384-_ZM8YgqGGowfRRfm1d1RwbG1mnZmaI7QIFjHn-ablxaKCvRmL9574zsKQ5I_Ivl_ rel=stylesheet>
+<link href=./favicon.ico integrity=sha384-AwiXhSc6rEp-Vwzj5cT1wsVee9rQxGyZ2GxhRGnUcQLa5hwAOL0m60v15mNWmyZl rel=icon>
+<link as=fetch crossorigin href=./slider_bg.wasm
+    integrity=sha384-v99_vL_Y1YoHbhei12RFfXCBQ8lfnd14Dn7vjOkn9k_GgVUVwch7iXEMxIUckOOm rel=preload type=application/wasm>
+<link crossorigin href=./slider.js integrity=sha384-cMrux37dJgIN6_wceG_XEGB8rDKlHazZRqb6aR2EjnHigTUCFo7xaACRh-m7zwHv
+    rel=modulepreload>
+</head>
+
+<body>
+    <script type=module>import a,*as b from"./slider.js";a(`./slider_bg.wasm`);window.wasmBindings=b</script>
+</body>
+
+</html>
