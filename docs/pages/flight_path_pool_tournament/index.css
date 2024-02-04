@@ -1,0 +1,33 @@
+body {
+    color: black;
+    text-align: center;
+    font-size: 1.4em;
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#logo-container {
+    padding-top: 30px;
+
+    #logo {
+        box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    }
+}
+
+#breaking-box {
+    font-size: 1em;
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 30px;
+    border-style: solid;
+    border-radius: 10px;
+    border-color: black;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
