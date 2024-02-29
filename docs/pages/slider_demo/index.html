@@ -1,1 +1,16 @@
-<!doctype html><meta charset=utf-8><title>Slider</title><link href=./index.css integrity=sha384-Bv7WzNAR6qkRuqzBZC7SdzUEiESGijJChAHMdKpOvm1AboYM1edF9aATZVppSKVQ rel=stylesheet><link href=./favicon.ico integrity=sha384-AwiXhSc6rEp-Vwzj5cT1wsVee9rQxGyZ2GxhRGnUcQLa5hwAOL0m60v15mNWmyZl rel=icon><link as=fetch crossorigin href=./slider_bg.wasm integrity=sha384-tck_Lj7V0x4vUZOJILV2ubPkNKYTqHluY4199ZmH1cJ9lvtl5-snM_hZ7vviEl3h rel=preload type=application/wasm><link crossorigin href=./slider.js integrity=sha384-JzGGn67pYkOGGbUV45R7rlszC09C9T1IhA7FaM7-TEs9QevMsVkyJzR8GbbyB0wk rel=modulepreload></head><body><script type=module>import a,*as b from"./slider.js";a(`./slider_bg.wasm`);window.wasmBindings=b</script></body></html>
+<!doctype html>
+<meta charset=utf-8>
+<title>Slider</title>
+<link href=./index.css integrity=sha384-Bv7WzNAR6qkRuqzBZC7SdzUEiESGijJChAHMdKpOvm1AboYM1edF9aATZVppSKVQ rel=stylesheet>
+<link href=./favicon.ico integrity=sha384-AwiXhSc6rEp-Vwzj5cT1wsVee9rQxGyZ2GxhRGnUcQLa5hwAOL0m60v15mNWmyZl rel=icon>
+<link as=fetch crossorigin href=./slider_bg.wasm
+    integrity=sha384-iqgkjVkpEhcuzeKf-MEnMx6d7rgZ1pkwVJiYyEWtFx-9FEh09-kB_HbJFeHo4Lfq rel=preload type=application/wasm>
+<link crossorigin href=./slider.js integrity=sha384-SzYsqY09MADpt1gg_QooRN3mw12NbYPIUbCJ71nTgGgnIkKXCg7nzNNoUDHLV2Nz
+    rel=modulepreload>
+</head>
+
+<body>
+    <script type=module>import a,*as b from"./slider.js";a(`./slider_bg.wasm`);window.wasmBindings=b</script>
+</body>
+
+</html>
