@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Kaden.DEV</title>
+    <link rel="icon" href="favicon.png">
+</head>
+
+<style>
+    * {
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        line-height: 36px;
+        text-align: left;
+    }
+
+    div {
+        text-align: center;
+        margin: 5%;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 60px;
+    }
+
+    img {
+        width: 80%;
+    }
+</style>
+
+<body>
+    <div>
+        <br>
+        <br>
+        <h1>Software Doesn't Have Clay</h1>
+        <img class="rcorners" src="Paper_Clay_Reality.excalidraw.svg" alt="Three Stage Diagram">
+        <div>
+            <p> At the front of the design process (the far left of the
+                scale), software has sketching, but a sketch's
+                job is
+                to
+                give you the gist of a design while necessarily being
+                unrealistic - literally a fuzzy, lower-dimensional
+                projection of a thing. So you can trust the sketch to give
+                you a quick, imprecise picture of a system,
+                but
+                you
+                can't manipulate it or experiment with it.</p>
+            <p>
+                Software has manufacturing processes. It has best practices.
+                It has automated testing. The way each of
+                those
+                things influence the overall design is via feedback from
+                developers/operations/product about the
+                relative
+                difficulties and costs of your chosen deployment strategy.
+                In other words, by the time we’re here (all
+                the
+                way
+                to the right side), it’s too late for clay. Things have been
+                cast in metal, parts are being shipped, and
+                we
+                have
+                to write a QC checklist. FAR too late for clay. You've
+                already spent the money, so the only way you can
+                alter
+                the course of the project at this point is by de-scoping,
+                meaning cutting stuff off until the burndown
+                chart
+                looks correct.
+            </p>
+
+            <p>But as for the middle of the design process - the moment
+                <i>after</i> the sketch but <i>before</i> you
+                decide which
+                wires
+                connect where, or whether you want to run it as
+                microservices or a monolith - that’s the place for clay.
+                Something that shares dimensionality with your actual
+                solution, allowing you to visualize it in its
+                native
+                space, without the inherent time and complexity of rendering
+                it in its actual materials and fitments,
+                but
+                also
+                with a fluidity that makes change easy, especially changes
+                that are <i>nearest in shape</i>.
+            </p>
+
+            <p>I wanna build software clay. Something that lets me give
+                someone a realistic feel for a whole system
+                WITHOUT
+                BUILDING IT FIRST. While still leaving things largely
+                undecided.</p>
+
+            <p>It would have to give us some things to be useful.
+            <ol>
+                <li>It would need to be able to both shape and validate
+                    our assumptions about the system‘s expected
+                    characteristics, performance, and refactoring
+                    patterns. Stuff like:
+                    <ul>
+                        <li><i>“given this architecture, here’s how you
+                                would add a piece of data to a user’s
+                                profile”</i></li>
+                        <li><i>"what things does the latency of this endpoint depend on?"</i></li>
+                        <li><i>"what are the implications of adding action A, every time event E happens?"</i></li>
+                    </ul>
+                </li>
+                <li>
+                    It would also need to be able to serve as a
+                    scaffolding for the implementation - that could take
+                    many
+                    forms:
+                    <ul>
+                        <li>codegen or project templates</li>
+                        <li>api-spec</li>
+                        <li>or even just a sequence of JIRA tickets</li>
+                    </ul>
+                </li>
+                </p>
+            </ol>
+
+            <p>In other words, it would need to serve as a both framework
+                for forming insights about the system
+                (useful
+                now)
+                as
+                well as be an efficient use of time to learn and operate
+                (useful later).</p>
+
+            <p>Getting an app out there is costly. It involves enumerating
+                all the weird cases in your business
+                logic,
+                creating
+                helm charts, deciding which cloud provider you're going to
+                use, or which database you need, or what
+                serialization library works best for you, etc. None of those
+                things are what your app DOES.</p>
+
+            <p>A software-as-clay system would let you describe what your
+                app DOES. It would let you walk around in
+                the possibility space near a place you've chosen, allowing
+                tweaks to be made as you go. In some cases,
+                it might be able to provide default implementations for
+                enough pieces that actually running a crappy
+                prototype version of your app is possible on day 1. If not,
+                it should be able to tell you WHY not, as in
+                <i>"which missing functionality is preventing me from deploying a crappy but end-to-end app"</i>.
+            </p>
+
+            <p>What we need is something that's able to be <i>shaped</i>
+                like your app, but without all the hassle of
+                actually
+                BEING
+                your app.</p>
+        </div>
+    </div>
+</body>
+
+</html>
