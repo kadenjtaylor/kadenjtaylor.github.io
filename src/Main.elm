@@ -53,6 +53,7 @@ update msg model =
           --   ( model, Nav.load (Url.toString url) )
           -- else
           --   ( model, Nav.pushUrl model.key (Url.toString url) )
+          Debug.log (Url.toString url)
           ( model, Nav.load (Url.toString url) )
           -- (model, Debug.log url.path Cmd.none)
 

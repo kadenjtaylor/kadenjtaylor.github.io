@@ -5197,7 +5197,7 @@ var $author$project$Main$subscriptions = function (_v0) {
 	return $elm$core$Platform$Sub$none;
 };
 var $elm$browser$Browser$Navigation$load = _Browser_load;
-var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
+var $elm$core$Debug$log = _Debug_log;
 var $elm$url$Url$addPort = F2(
 	function (maybePort, starter) {
 		if (maybePort.$ === 'Nothing') {
@@ -5248,15 +5248,13 @@ var $author$project$Main$update = F2(
 			var urlRequest = msg.a;
 			if (urlRequest.$ === 'Internal') {
 				var url = urlRequest.a;
-				return A2($elm$core$String$startsWith, '/pages/', url.path) ? _Utils_Tuple2(
-					model,
-					$elm$browser$Browser$Navigation$load(
-						$elm$url$Url$toString(url))) : _Utils_Tuple2(
-					model,
-					A2(
-						$elm$browser$Browser$Navigation$pushUrl,
-						model.key,
-						$elm$url$Url$toString(url)));
+				return A2(
+					$elm$core$Debug$log,
+					$elm$url$Url$toString(url),
+					_Utils_Tuple2(
+						model,
+						$elm$browser$Browser$Navigation$load(
+							$elm$url$Url$toString(url))));
 			} else {
 				var href = urlRequest.a;
 				return _Utils_Tuple2(
