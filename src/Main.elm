@@ -47,16 +47,13 @@ update msg model =
     LinkClicked urlRequest ->
       case urlRequest of
         Browser.Internal url ->
-          -- Here's the issue - if we click an "internal link" to "pages/*", we actually wanna do a load like it's external
-          -- Because even though it's all deployed in the same directory, we want the github pages server logic to handle these
+          -- Here's the issue - if we click an "internal link" to "/pages/*", we actually wanna do a load like it's external
+          -- Because even though it's all deployed in the same directory, we want the github pages server logic to handle these ones
           if String.startsWith "/pages/" url.path then
-            Debug.log (String.concat [ "pages link!", (Url.toString url) ])
             ( model, Nav.load (Url.toString url) )
           else
-            Debug.log (String.concat [ "other internal link!", (Url.toString url) ])
+            -- In THIS case, we can do whatever we want in elm
             ( model, Nav.pushUrl model.key (Url.toString url) )
-          -- ( model, Nav.load (Url.toString url) )
-          -- (model, Debug.log url.path Cmd.none)
 
         Browser.External href ->
           ( model, Nav.load href )
