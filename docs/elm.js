@@ -5182,8 +5182,12 @@ var $elm$core$Platform$Sub$none = $elm$core$Platform$Sub$batch(_List_Nil);
 var $author$project$Main$subscriptions = function (_v0) {
 	return $elm$core$Platform$Sub$none;
 };
+var $elm$core$String$concat = function (strings) {
+	return A2($elm$core$String$join, '', strings);
+};
 var $elm$browser$Browser$Navigation$load = _Browser_load;
 var $elm$core$Debug$log = _Debug_log;
+var $elm$browser$Browser$Navigation$pushUrl = _Browser_pushUrl;
 var $elm$url$Url$addPort = F2(
 	function (maybePort, starter) {
 		if (maybePort.$ === 'Nothing') {
@@ -5234,12 +5238,30 @@ var $author$project$Main$update = F2(
 			var urlRequest = msg.a;
 			if (urlRequest.$ === 'Internal') {
 				var url = urlRequest.a;
-				return A2(
+				return A2($elm$core$String$startsWith, '/pages/', url.path) ? A2(
 					$elm$core$Debug$log,
-					$elm$url$Url$toString(url),
+					$elm$core$String$concat(
+						_List_fromArray(
+							[
+								'pages link!',
+								$elm$url$Url$toString(url)
+							])),
 					_Utils_Tuple2(
 						model,
 						$elm$browser$Browser$Navigation$load(
+							$elm$url$Url$toString(url)))) : A2(
+					$elm$core$Debug$log,
+					$elm$core$String$concat(
+						_List_fromArray(
+							[
+								'other internal link!',
+								$elm$url$Url$toString(url)
+							])),
+					_Utils_Tuple2(
+						model,
+						A2(
+							$elm$browser$Browser$Navigation$pushUrl,
+							model.key,
 							$elm$url$Url$toString(url))));
 			} else {
 				var href = urlRequest.a;
