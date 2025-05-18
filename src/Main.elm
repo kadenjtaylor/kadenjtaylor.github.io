@@ -82,10 +82,7 @@ view model =
         }
       _ ->  
         { title = "NOT FOUND"
-        , body =
-            [ text "The current URL is: "
-            , b [] [ text (Url.toString model.url) ]
-            ]
+        , body = notFoundPage model
         }
 
 
@@ -190,6 +187,21 @@ oldPage _ = -- model
             ]
         ]]
     
+
+notFoundPage: Model -> List (Html Msg)
+notFoundPage model =
+  [
+    div []
+        [ br []
+            []
+        , br []
+            []
+        , h1 []
+            [ text (Url.toString model.url) ]
+        , p []
+            [ text "404 Page Not Found" ]
+        ]
+  ] 
 
 
 viewLink : String -> Html msg
