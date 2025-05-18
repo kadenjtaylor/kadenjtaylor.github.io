@@ -79,10 +79,29 @@ view model =
         { title = "Kaden.DEV",
           body = oldPage model
         }
+      "stable-test-link" ->
+        {
+            title = "Stable Test Link",
+            body = [testLink model]
+         }
       _ ->  
         { title = "NOT FOUND"
         , body = notFoundPage model
         }
+
+
+testLink: Model -> Html Msg
+testLink model = 
+    div []
+        [ br []
+            []
+        , br []
+            []
+        , h1 []
+            [ text (Url.toString model.url) ]
+        , p []
+            [ text "You should be able to link to this, even though it doesn't exist until you ask for it" ]
+        ]
 
 
 oldPage : Model -> List (Html msg)

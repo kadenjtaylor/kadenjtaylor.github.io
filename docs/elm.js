@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.P.z)
+	if (region.K.z === region.Q.z)
 	{
-		return 'on line ' + region.J.z;
+		return 'on line ' + region.K.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.P.z;
+	return 'on lines ' + region.K.z + ' through ' + region.Q.z;
 }
 
 
@@ -2720,8 +2720,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		K: record.K,
-		H: record.H
+		L: record.L,
+		I: record.I
 	}
 });
 
@@ -2990,10 +2990,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.K;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.L;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.H) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.I) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3983,7 +3983,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 		impl.aC,
 		impl.aB,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.I && impl.I(sendToApp)
+			var divertHrefToApp = impl.J && impl.J(sendToApp)
 			var view = impl.aD;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.M);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.F);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.ai) && (_VirtualDom_doc.title = title = doc.ai);
+				(title !== doc.M) && (_VirtualDom_doc.title = title = doc.M);
 			});
 		}
 	);
@@ -4058,7 +4058,7 @@ function _Browser_application(impl)
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		I: function(sendToApp)
+		J: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ab === next.ab
-							&& curr.T === next.T
-							&& curr.Z.a === next.Z.a
+							&& curr.ac === next.ac
+							&& curr.U === next.U
+							&& curr._.a === next._.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		af: _Browser_getScene(),
+		ag: _Browser_getScene(),
 		aj: {
 			al: _Browser_window.pageXOffset,
 			am: _Browser_window.pageYOffset,
 			ak: _Browser_doc.documentElement.clientWidth,
-			S: _Browser_doc.documentElement.clientHeight
+			T: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4263,7 +4263,7 @@ function _Browser_getScene()
 	var elem = _Browser_doc.documentElement;
 	return {
 		ak: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		S: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		T: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			af: {
+			ag: {
 				ak: node.scrollWidth,
-				S: node.scrollHeight
+				T: node.scrollHeight
 			},
 			aj: {
 				al: node.scrollLeft,
 				am: node.scrollTop,
 				ak: node.clientWidth,
-				S: node.clientHeight
+				T: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			af: _Browser_getScene(),
+			ag: _Browser_getScene(),
 			aj: {
 				al: x,
 				am: y,
 				ak: _Browser_doc.documentElement.clientWidth,
-				S: _Browser_doc.documentElement.clientHeight
+				T: _Browser_doc.documentElement.clientHeight
 			},
 			ar: {
 				al: x + rect.left,
 				am: y + rect.top,
 				ak: rect.width,
-				S: rect.height
+				T: rect.height
 			}
 		};
 	});
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {R: fragment, T: host, X: path, Z: port_, ab: protocol, ac: query};
+		return {S: fragment, U: host, Y: path, _: port_, ac: protocol, ad: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5161,7 +5161,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Main$Model = F2(
 	function (key, url) {
-		return {U: key, E: url};
+		return {V: key, E: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
@@ -5200,7 +5200,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.ab;
+		var _v0 = url.ac;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5210,17 +5210,17 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.R,
+		url.S,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.ac,
+			url.ad,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url.Z,
-					_Utils_ap(http, url.T)),
-				url.X)));
+					url._,
+					_Utils_ap(http, url.U)),
+				url.Y)));
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -5228,14 +5228,14 @@ var $author$project$Main$update = F2(
 			var urlRequest = msg.a;
 			if (!urlRequest.$) {
 				var url = urlRequest.a;
-				return A2($elm$core$String$startsWith, '/pages/', url.X) ? _Utils_Tuple2(
+				return A2($elm$core$String$startsWith, '/pages/', url.Y) ? _Utils_Tuple2(
 					model,
 					$elm$browser$Browser$Navigation$load(
 						$elm$url$Url$toString(url))) : _Utils_Tuple2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.U,
+						model.V,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5562,18 +5562,52 @@ var $author$project$Main$oldPage = function (_v0) {
 				]))
 		]);
 };
+var $author$project$Main$testLink = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_Nil,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				A2($elm$html$Html$br, _List_Nil, _List_Nil),
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text(
+						$elm$url$Url$toString(model.E))
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('You should be able to link to this, even though it doesn\'t exist until you ask for it')
+					]))
+			]));
+};
 var $author$project$Main$view = function (model) {
-	var _v0 = model.E.X;
-	if (_v0 === '/') {
-		return {
-			M: $author$project$Main$oldPage(model),
-			ai: 'Kaden.DEV'
-		};
-	} else {
-		return {
-			M: $author$project$Main$notFoundPage(model),
-			ai: 'NOT FOUND'
-		};
+	var _v0 = model.E.Y;
+	switch (_v0) {
+		case '/':
+			return {
+				F: $author$project$Main$oldPage(model),
+				M: 'Kaden.DEV'
+			};
+		case 'stable-test-link':
+			return {
+				F: _List_fromArray(
+					[
+						$author$project$Main$testLink(model)
+					]),
+				M: 'Stable Test Link'
+			};
+		default:
+			return {
+				F: $author$project$Main$notFoundPage(model),
+				M: 'NOT FOUND'
+			};
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
