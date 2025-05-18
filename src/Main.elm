@@ -49,10 +49,11 @@ update msg model =
         Browser.Internal url ->
           -- Here's the issue - if we click an "internal link" to "pages/*", we actually wanna do a load like it's external
           -- Because even though it's all deployed in the same directory, we want the github pages server logic to handle these 
-          if String.startsWith "/pages/" url.path then
-            ( model, Nav.load (Url.toString url) )
-          else
-            ( model, Nav.pushUrl model.key (Url.toString url) )
+          -- if String.startsWith "/pages/" url.path then
+          --   ( model, Nav.load (Url.toString url) )
+          -- else
+          --   ( model, Nav.pushUrl model.key (Url.toString url) )
+          ( model, Nav.load (Url.toString url) )
           -- (model, Debug.log url.path Cmd.none)
 
         Browser.External href ->
