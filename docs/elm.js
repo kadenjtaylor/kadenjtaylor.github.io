@@ -5513,7 +5513,7 @@ var $author$project$Main$oldPage = function (_v0) {
 									$elm$html$Html$a,
 									_List_fromArray(
 										[
-											$elm$html$Html$Attributes$href('https://kaden.dev/pages/arithmetic_demo')
+											$elm$html$Html$Attributes$href('pages/arithmetic_demo')
 										]),
 									_List_fromArray(
 										[

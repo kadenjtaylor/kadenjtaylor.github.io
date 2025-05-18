@@ -182,7 +182,7 @@ oldPage _ = -- model
                 [ style "margin" "10px"
                 ]
                 [ a
-                    [ href "https://kaden.dev/pages/arithmetic_demo"
+                    [ href "pages/arithmetic_demo"
                     ]
                     [ text "Visualizing Symbolic Manipulation" ]
                 ]
