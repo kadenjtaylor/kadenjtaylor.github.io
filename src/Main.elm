@@ -79,7 +79,7 @@ view model =
         { title = "Kaden.DEV",
           body = oldPage model
         }
-      "stable-test-link" ->
+      "/stable-test-link" ->
         {
             title = "Stable Test Link",
             body = [testLink model]

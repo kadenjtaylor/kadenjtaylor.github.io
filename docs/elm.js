@@ -5595,7 +5595,7 @@ var $author$project$Main$view = function (model) {
 				F: $author$project$Main$oldPage(model),
 				M: 'Kaden.DEV'
 			};
-		case 'stable-test-link':
+		case '/stable-test-link':
 			return {
 				F: _List_fromArray(
 					[
