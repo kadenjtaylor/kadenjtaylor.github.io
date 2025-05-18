@@ -5,6 +5,7 @@
   <meta charset="utf-8" />
   <title>Kaden.DEV</title>
   <link rel="icon" href="resources/favicon.png">
+  <script src="elm.js"></script>
 </head>
 
 <style>
@@ -111,7 +112,7 @@
   }
 </style>
 
-<body>
+<!-- <body>
   <div id="header">
     <div id="title-card">
       <h1>Kaden.dev</h1>
@@ -150,6 +151,15 @@
       </li>
     </ul>
   </div>
+</body> -->
+<body>
+  <div id="myapp"></div>
+  <script>
+  var app = Elm.Main.init({
+    node: document.getElementById('myapp'),
+    flags: Date.now()
+  });
+  </script>
 </body>
 
 </html>
