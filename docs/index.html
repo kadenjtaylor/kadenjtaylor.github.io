@@ -90,30 +90,25 @@
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    grid-gap: 10px;
+    grid-gap: 5px;
   }
 
   .square {
     background-color: #ffffff;
     border: 1px solid #333;
-    padding: 20px;
-    margin: 40px;
+    padding: 10px;
+    margin: 25px;
     text-align: center;
     border-radius: 10px;
     cursor: pointer;
-  }
-
-  a.fill-div {
-    display: block;
-    height: 100%;
-    width: 100%;
-    text-decoration: none;
+    align-content: space-around;
   }
 
   .square img {
-    max-width: 100%;
+    max-width: 95%;
     height: auto;
     border-radius: 10px;
+    min-width: 80%;
   }
 
   .square .title {
