@@ -5340,6 +5340,26 @@ var $author$project$Main$linkBar = A2(
 			$elm$html$Html$a,
 			_List_fromArray(
 				[
+					$elm$html$Html$Attributes$href('mailto:kadenjtaylor@gmail.com')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
+							A2($elm$html$Html$Attributes$style, 'width', '40px'),
+							$elm$html$Html$Attributes$src('resources/logo_email.png'),
+							$elm$html$Html$Attributes$alt('Email Me'),
+							$elm$html$Html$Attributes$title('Email Me')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
 					$elm$html$Html$Attributes$href('https://www.linkedin.com/in/kaden-taylor/')
 				]),
 			_List_fromArray(
