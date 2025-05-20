@@ -5667,7 +5667,7 @@ var $author$project$Main$notFoundPage = function (model) {
 		]);
 };
 var $elm$html$Html$li = _VirtualDom_node('li');
-var $elm$html$Html$ul = _VirtualDom_node('ul');
+var $elm$html$Html$ol = _VirtualDom_node('ol');
 var $author$project$Main$testLink = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -5699,30 +5699,54 @@ var $author$project$Main$testLink = function (model) {
 						$elm$html$Html$text('What you\'re seeing right now is what happens when you copy your elm.js file into your custom 404 page.')
 					])),
 				A2(
-				$elm$html$Html$ul,
-				_List_Nil,
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'width', 'fit-content'),
+						A2($elm$html$Html$Attributes$style, 'margin', 'auto')
+					]),
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$li,
+						$elm$html$Html$ol,
 						_List_Nil,
 						_List_fromArray(
 							[
-								$elm$html$Html$text('Github pages tries to find a static resource at this url')
-							])),
-						A2(
-						$elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('It fails, so it returns a 404 along with showing the content of my custom 404.html page')
-							])),
-						A2(
-						$elm$html$Html$li,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('It\'s then handled by the transpiled-to-js elm code, which decides based on the given url what to show')
+								A2(
+								$elm$html$Html$h2,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('How does it work?')
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('You navigate directly to this url, rather than from inside the site')
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('Github pages tries to find a static resource at this url')
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('It fails, so it returns a 404 along with showing the content of my custom 404.html page')
+									])),
+								A2(
+								$elm$html$Html$li,
+								_List_Nil,
+								_List_fromArray(
+									[
+										$elm$html$Html$text('It\'s then handed over to the transpiled-to-js elm code, which decides what to show based on the given url')
+									]))
 							]))
 					])),
 				A2(
