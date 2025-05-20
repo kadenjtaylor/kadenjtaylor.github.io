@@ -5252,7 +5252,16 @@ var $author$project$Main$update = F2(
 				$elm$core$Platform$Cmd$none);
 		}
 	});
-var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $author$project$Main$blurbStyles = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'padding', '20px'),
+		A2($elm$html$Html$Attributes$style, 'margin', '30px'),
+		A2($elm$html$Html$Attributes$style, 'border', '1px solid #333'),
+		A2($elm$html$Html$Attributes$style, 'border-radius', '20px'),
+		A2($elm$html$Html$Attributes$style, 'box-shadow', '4px 5px rgba(0, 0, 0, 0.5)')
+	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5264,18 +5273,68 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\n';
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$about2 = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('blurbs')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			$author$project$Main$blurbStyles,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$h3,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Present:')
+						])),
+					A2(
+					$elm$html$Html$span,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text($author$project$Main$presentBlurb)
+						]))
+				])),
+			A2(
+			$elm$html$Html$div,
+			$author$project$Main$blurbStyles,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$h3,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Future:')
+						])),
+					A2(
+					$elm$html$Html$span,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text($author$project$Main$futureBlurb)
+						]))
+				]))
+		]));
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $author$project$Main$about = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			$elm$html$Html$Attributes$class('centered-container')
+			$elm$html$Html$Attributes$class('centered-container'),
+			A2($elm$html$Html$Attributes$style, 'max-width', '80%'),
+			A2($elm$html$Html$Attributes$style, 'margin', 'auto')
 		]),
 	_List_fromArray(
 		[
@@ -5286,42 +5345,9 @@ var $author$project$Main$about = A2(
 				[
 					$elm$html$Html$text('Here\'s what I\'m about:')
 				])),
-			A2(
-			$elm$html$Html$h3,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Present:')
-				])),
-			A2(
-			$elm$html$Html$span,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$id('blurb')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text($author$project$Main$presentBlurb)
-				])),
-			A2(
-			$elm$html$Html$h3,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Future:')
-				])),
-			A2(
-			$elm$html$Html$span,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$id('blurb')
-				]),
-			_List_fromArray(
-				[
-					$elm$html$Html$text($author$project$Main$futureBlurb)
-				])),
-			A2($elm$html$Html$br, _List_Nil, _List_Nil)
+			$author$project$Main$about2
 		]));
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$img = _VirtualDom_node('img');
@@ -5331,8 +5357,6 @@ var $elm$html$Html$Attributes$src = function (url) {
 		'src',
 		_VirtualDom_noJavaScriptOrHtmlUri(url));
 };
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $elm$html$Html$Attributes$title = $elm$html$Html$Attributes$stringProperty('title');
 var $author$project$Main$kadenFaceImage = A2(
 	$elm$html$Html$img,
@@ -5614,6 +5638,7 @@ var $author$project$Main$homePage = function (model) {
 			$author$project$Main$projects(model)
 		]);
 };
+var $elm$html$Html$br = _VirtualDom_node('br');
 var $author$project$Main$notFoundPage = function (model) {
 	return _List_fromArray(
 		[

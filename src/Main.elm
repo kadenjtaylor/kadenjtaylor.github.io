@@ -178,23 +178,35 @@ pure information."""
 about : Html Msg
 about =
     div
-        [ class "centered-container" ]
+        [ class "centered-container", style "max-width" "80%", style "margin" "auto"]
         [ h2 []
             [ text "Here's what I'm about:" ]
-        , h3 []
+        , about2
+        ]
+
+
+blurbStyles: List (Attribute Msg)
+blurbStyles = [
+    style "padding" "20px", 
+    style "margin" "30px",
+    style "border" "1px solid #333",
+    style "border-radius" "20px",
+    style "box-shadow" "4px 5px rgba(0, 0, 0, 0.5)"]
+
+about2: Html Msg
+about2 = 
+    div [ class "blurbs" ]
+        [ div blurbStyles
+            [ h3 []
             [ text "Present:" ]
         , span
-            [ id "blurb"
-            ]
-            [ text presentBlurb]
-        , h3 []
+            []
+            [ text presentBlurb] ]
+        , div blurbStyles [ h3 []
             [ text "Future:" ]
         , span
-            [ id "blurb"
-            ]
-            [ text futureBlurb]
-        , br []
             []
+            [ text futureBlurb]]
         ]
 
 
