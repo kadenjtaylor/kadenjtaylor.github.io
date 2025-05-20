@@ -158,16 +158,41 @@ header _ =
         ]
 
 
+presentBlurb: String
+presentBlurb = """I love domain modeling, functional programming, and making code understandable.
+I'm on the more extroverted side for a software developer, and I LOVE getting a chance to design
+systems that are meant to be understood and upgraded, not patched into oblivion and thrown away
+when the weight of all the lost system knowledge becomes too heavy. Recently I've been doing a ton
+of CAD and 3d printing, and that's been a wonderful creative outlet to hone my prototyping skills.
+""" 
+
+futureBlurb: String
+futureBlurb = """
+I'm slowly but surely working my way towards a visual programming interface that I hope will help to
+democratize the manipulation of software. The main ideas have been motiviated equally by the specific
+struggles of people I've seen trying to build/modify/explain/understand software over the last decade
+or so, along with some general ideas about pattern and structure that come from reading G.E.B., watching
+the Iron Man movies, and taking long walks to think about the ideal way to describe machines made from
+pure information."""
+
 about : Html Msg
 about =
     div
         [ class "centered-container" ]
         [ h2 []
             [ text "Here's what I'm about:" ]
+        , h3 []
+            [ text "Present:" ]
         , span
             [ id "blurb"
             ]
-            [ text " I love domain modeling, functional programming, and making code understandable. I'm on the more extroverted side for a software developer, and I really like getting the chance to understand a domain well enough to explain it to anyone. I believe in collaborating to create the right solution the first time. Recently I've been working in Scala, and that's been an absolute blast. " ]
+            [ text presentBlurb]
+        , h3 []
+            [ text "Future:" ]
+        , span
+            [ id "blurb"
+            ]
+            [ text futureBlurb]
         , br []
             []
         ]

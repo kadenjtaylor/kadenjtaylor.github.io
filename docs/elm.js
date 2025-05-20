@@ -5263,8 +5263,11 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\n';
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -5284,6 +5287,13 @@ var $author$project$Main$about = A2(
 					$elm$html$Html$text('Here\'s what I\'m about:')
 				])),
 			A2(
+			$elm$html$Html$h3,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Present:')
+				])),
+			A2(
 			$elm$html$Html$span,
 			_List_fromArray(
 				[
@@ -5291,7 +5301,24 @@ var $author$project$Main$about = A2(
 				]),
 			_List_fromArray(
 				[
-					$elm$html$Html$text(' I love domain modeling, functional programming, and making code understandable. I\'m on the more extroverted side for a software developer, and I really like getting the chance to understand a domain well enough to explain it to anyone. I believe in collaborating to create the right solution the first time. Recently I\'ve been working in Scala, and that\'s been an absolute blast. ')
+					$elm$html$Html$text($author$project$Main$presentBlurb)
+				])),
+			A2(
+			$elm$html$Html$h3,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Future:')
+				])),
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$id('blurb')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text($author$project$Main$futureBlurb)
 				])),
 			A2($elm$html$Html$br, _List_Nil, _List_Nil)
 		]));
