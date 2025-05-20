@@ -105,16 +105,16 @@ testLink model =
         , h1 []
             [ text (Url.toString model.url) ]
         , p []
-            [ text "You should be able to link to this, even though it doesn't exist until you ask for it" ]
+            [ text "You should be able to link to this, even though it doesn't exist until you ask for it and Github Pages fails to locate it :)" ]
         ]
 
 
 linkBar : Html Msg
 linkBar =
     div [ style "margin" "10px", style "position" "absolute", style "right" "5%" ]
-        [ a [ href "mailto:kadenjtaylor@gmail.com"] [img [style "margin-right" "20px", style "width" "40px", src "resources/logo_email.png", alt "Email Me", title "Email Me"] []]
-        , a [ href "https://www.linkedin.com/in/kaden-taylor/" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_linkedin.png", alt "LinkedIn", title "Linkedin"] [] ]
-        , a [ href "https://github.com/kadenjtaylor" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_github.png", alt "GitHub", title "Github"] [] ]
+        [ a [ href "mailto:kadenjtaylor@gmail.com" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_email.png", alt "Email Me", title "Email Me" ] [] ]
+        , a [ href "https://www.linkedin.com/in/kaden-taylor/" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_linkedin.png", alt "LinkedIn", title "Linkedin" ] [] ]
+        , a [ href "https://github.com/kadenjtaylor" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_github.png", alt "GitHub", title "Github" ] [] ]
         , a [ href "https://github.com/kadenjtaylor/resumaker/raw/main/latex/kaden_taylor_resume.pdf" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_resume.png", alt "Resume", title "Resume" ] [] ]
         ]
 
@@ -127,7 +127,8 @@ kadenFaceImage =
         , alt "Kaden's Face"
         , style "width" "175px"
         , style "height" "175px"
-        , title "Kaden's Face"]
+        , title "Kaden's Face"
+        ]
         []
 
 
@@ -158,16 +159,19 @@ header _ =
         ]
 
 
-presentBlurb: String
-presentBlurb = """I love domain modeling, functional programming, and making code understandable.
+presentBlurb : String
+presentBlurb =
+    """I love domain modeling, functional programming, and making code understandable.
 I'm on the more extroverted side for a software developer, and I LOVE getting a chance to design
 systems that are meant to be understood and upgraded, not patched into oblivion and thrown away
 when the weight of all the lost system knowledge becomes too heavy. Recently I've been doing a ton
 of CAD and 3d printing, and that's been a wonderful creative outlet to hone my prototyping skills.
-""" 
+"""
 
-futureBlurb: String
-futureBlurb = """
+
+futureBlurb : String
+futureBlurb =
+    """
 I'm slowly but surely working my way towards a visual programming interface that I hope will help to
 democratize the manipulation of software. The main ideas have been motiviated equally by the specific
 struggles of people I've seen trying to build/modify/explain/understand software over the last decade
@@ -175,38 +179,39 @@ or so, along with some general ideas about pattern and structure that come from 
 the Iron Man movies, and taking long walks to think about the ideal way to describe machines made from
 pure information."""
 
+
+blurbStyles : List (Attribute Msg)
+blurbStyles =
+    [ style "padding" "20px"
+    , style "margin" "30px"
+    , style "border" "1px solid #333"
+    , style "border-radius" "20px"
+    , style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"
+    ]
+
+
 about : Html Msg
 about =
     div
-        [ class "centered-container", style "max-width" "80%", style "margin" "auto"]
+        [ class "centered-container", style "max-width" "80%", style "margin" "auto" ]
         [ h2 []
             [ text "Here's what I'm about:" ]
-        , about2
-        ]
-
-
-blurbStyles: List (Attribute Msg)
-blurbStyles = [
-    style "padding" "20px", 
-    style "margin" "30px",
-    style "border" "1px solid #333",
-    style "border-radius" "20px",
-    style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"]
-
-about2: Html Msg
-about2 = 
-    div [ class "blurbs" ]
-        [ div blurbStyles
-            [ h3 []
-            [ text "Present:" ]
-        , span
-            []
-            [ text presentBlurb] ]
-        , div blurbStyles [ h3 []
-            [ text "Future:" ]
-        , span
-            []
-            [ text futureBlurb]]
+        , div [ class "blurbs" ]
+            [ div blurbStyles
+                [ h3 []
+                    [ text "Present:" ]
+                , span
+                    []
+                    [ text presentBlurb ]
+                ]
+            , div blurbStyles
+                [ h3 []
+                    [ text "Future:" ]
+                , span
+                    []
+                    [ text futureBlurb ]
+                ]
+            ]
         ]
 
 
@@ -250,6 +255,7 @@ projectGrid _ =
             , gridSquare "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
             , gridSquare "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
             , gridSquare "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
+
             {- Add more squares here -}
             ]
         ]
