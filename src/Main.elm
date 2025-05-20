@@ -191,7 +191,7 @@ blurbStyles = [
     style "margin" "30px",
     style "border" "1px solid #333",
     style "border-radius" "20px",
-    style "box-shadow" "4px 5px rgba(0, 0, 0, 0.5)"]
+    style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"]
 
 about2: Html Msg
 about2 = 

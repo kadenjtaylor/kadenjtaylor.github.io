@@ -5260,7 +5260,7 @@ var $author$project$Main$blurbStyles = _List_fromArray(
 		A2($elm$html$Html$Attributes$style, 'margin', '30px'),
 		A2($elm$html$Html$Attributes$style, 'border', '1px solid #333'),
 		A2($elm$html$Html$Attributes$style, 'border-radius', '20px'),
-		A2($elm$html$Html$Attributes$style, 'box-shadow', '4px 5px rgba(0, 0, 0, 0.5)')
+		A2($elm$html$Html$Attributes$style, 'box-shadow', '2px 4px 5px rgba(0, 0, 0, 0.5)')
 	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
