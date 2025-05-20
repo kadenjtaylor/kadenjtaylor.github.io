@@ -5708,17 +5708,20 @@ var $author$project$Main$testLink = function (model) {
 				_List_fromArray(
 					[
 						A2(
-						$elm$html$Html$ol,
+						$elm$html$Html$h2,
 						_List_Nil,
 						_List_fromArray(
 							[
-								A2(
-								$elm$html$Html$h2,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('How does it work?')
-									])),
+								$elm$html$Html$text('How does it work?')
+							])),
+						A2(
+						$elm$html$Html$ol,
+						_List_fromArray(
+							[
+								A2($elm$html$Html$Attributes$style, 'text-align', 'left')
+							]),
+						_List_fromArray(
+							[
 								A2(
 								$elm$html$Html$li,
 								_List_Nil,
