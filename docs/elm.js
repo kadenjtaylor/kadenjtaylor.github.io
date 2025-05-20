@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.K.z === region.Q.z)
+	if (region.J.z === region.P.z)
 	{
-		return 'on line ' + region.K.z;
+		return 'on line ' + region.J.z;
 	}
-	return 'on lines ' + region.K.z + ' through ' + region.Q.z;
+	return 'on lines ' + region.J.z + ' through ' + region.P.z;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aC,
+		impl.at,
 		impl.aB,
+		impl.aA,
 		function() { return function() {} }
 	);
 });
@@ -2720,8 +2720,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		L: record.L,
-		I: record.I
+		K: record.K,
+		H: record.H
 	}
 });
 
@@ -2990,10 +2990,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.L;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.K;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.I) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.H) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3943,9 +3943,9 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aC,
+		impl.at,
 		impl.aB,
+		impl.aA,
 		function(sendToApp, initialModel) {
 			var view = impl.aD;
 			/**/
@@ -3979,11 +3979,11 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.av,
-		impl.aC,
+		impl.at,
 		impl.aB,
+		impl.aA,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.J && impl.J(sendToApp)
+			var divertHrefToApp = impl.I && impl.I(sendToApp)
 			var view = impl.aD;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
@@ -3992,12 +3992,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.F);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.E);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.M) && (_VirtualDom_doc.title = title = doc.M);
+				(title !== doc.L) && (_VirtualDom_doc.title = title = doc.L);
 			});
 		}
 	);
@@ -4053,12 +4053,12 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.ax;
-	var onUrlRequest = impl.ay;
+	var onUrlChange = impl.aw;
+	var onUrlRequest = impl.ax;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		J: function(sendToApp)
+		I: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ac === next.ac
-							&& curr.U === next.U
-							&& curr._.a === next._.a
+							&& curr.aa === next.aa
+							&& curr.T === next.T
+							&& curr.Y.a === next.Y.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		av: function(flags)
+		at: function(flags)
 		{
-			return A3(impl.av, flags, _Browser_getUrl(), key);
+			return A3(impl.at, flags, _Browser_getUrl(), key);
 		},
 		aD: impl.aD,
-		aC: impl.aC,
-		aB: impl.aB
+		aB: impl.aB,
+		aA: impl.aA
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { at: 'hidden', ap: 'visibilitychange' }
+		? { ar: 'hidden', an: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { at: 'mozHidden', ap: 'mozvisibilitychange' }
+		? { ar: 'mozHidden', an: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { at: 'msHidden', ap: 'msvisibilitychange' }
+		? { ar: 'msHidden', an: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { at: 'webkitHidden', ap: 'webkitvisibilitychange' }
-		: { at: 'hidden', ap: 'visibilitychange' };
+		? { ar: 'webkitHidden', an: 'webkitvisibilitychange' }
+		: { ar: 'hidden', an: 'visibilitychange' };
 }
 
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		ag: _Browser_getScene(),
-		aj: {
-			al: _Browser_window.pageXOffset,
-			am: _Browser_window.pageYOffset,
-			ak: _Browser_doc.documentElement.clientWidth,
-			T: _Browser_doc.documentElement.clientHeight
+		ae: _Browser_getScene(),
+		ah: {
+			aj: _Browser_window.pageXOffset,
+			ak: _Browser_window.pageYOffset,
+			ai: _Browser_doc.documentElement.clientWidth,
+			S: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4262,8 +4262,8 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ak: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		T: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		ai: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		S: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			ag: {
-				ak: node.scrollWidth,
-				T: node.scrollHeight
+			ae: {
+				ai: node.scrollWidth,
+				S: node.scrollHeight
 			},
-			aj: {
-				al: node.scrollLeft,
-				am: node.scrollTop,
-				ak: node.clientWidth,
-				T: node.clientHeight
+			ah: {
+				aj: node.scrollLeft,
+				ak: node.scrollTop,
+				ai: node.clientWidth,
+				S: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			ag: _Browser_getScene(),
-			aj: {
-				al: x,
-				am: y,
-				ak: _Browser_doc.documentElement.clientWidth,
-				T: _Browser_doc.documentElement.clientHeight
+			ae: _Browser_getScene(),
+			ah: {
+				aj: x,
+				ak: y,
+				ai: _Browser_doc.documentElement.clientWidth,
+				S: _Browser_doc.documentElement.clientHeight
 			},
-			ar: {
-				al: x + rect.left,
-				am: y + rect.top,
-				ak: rect.width,
-				T: rect.height
+			ap: {
+				aj: x + rect.left,
+				ak: y + rect.top,
+				ai: rect.width,
+				S: rect.height
 			}
 		};
 	});
@@ -4370,10 +4370,10 @@ function _Browser_load(url)
 		}
 	}));
 }
-var $author$project$Main$LinkClicked = function (a) {
+var $author$project$Domain$LinkClicked = function (a) {
 	return {$: 0, a: a};
 };
-var $author$project$Main$UrlChanged = function (a) {
+var $author$project$Domain$UrlChanged = function (a) {
 	return {$: 1, a: a};
 };
 var $elm$core$Basics$EQ = 1;
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {S: fragment, U: host, Y: path, _: port_, ac: protocol, ad: query};
+		return {R: fragment, T: host, W: path, Y: port_, aa: protocol, ab: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5159,16 +5159,16 @@ var $elm$core$Task$perform = F2(
 			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$application = _Browser_application;
-var $author$project$Main$Model = F2(
+var $author$project$Domain$Model = F2(
 	function (key, url) {
-		return {V: key, E: url};
+		return {au: key, aC: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Main$init = F3(
 	function (_v0, url, key) {
 		return _Utils_Tuple2(
-			A2($author$project$Main$Model, key, url),
+			A2($author$project$Domain$Model, key, url),
 			$elm$core$Platform$Cmd$none);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5200,7 +5200,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.ac;
+		var _v0 = url.aa;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5210,17 +5210,17 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.S,
+		url.R,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.ad,
+			url.ab,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url._,
-					_Utils_ap(http, url.U)),
-				url.Y)));
+					url.Y,
+					_Utils_ap(http, url.T)),
+				url.W)));
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -5228,14 +5228,14 @@ var $author$project$Main$update = F2(
 			var urlRequest = msg.a;
 			if (!urlRequest.$) {
 				var url = urlRequest.a;
-				return A2($elm$core$String$startsWith, '/pages/', url.Y) ? _Utils_Tuple2(
+				return A2($elm$core$String$startsWith, '/pages/', url.W) ? _Utils_Tuple2(
 					model,
 					$elm$browser$Browser$Navigation$load(
 						$elm$url$Url$toString(url))) : _Utils_Tuple2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.V,
+						model.au,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5248,16 +5248,319 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{E: url}),
+					{aC: url}),
 				$elm$core$Platform$Cmd$none);
 		}
 	});
 var $elm$html$Html$br = _VirtualDom_node('br');
+var $elm$json$Json$Encode$string = _Json_wrap;
+var $elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			$elm$json$Json$Encode$string(string));
+	});
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
-var $elm$html$Html$p = _VirtualDom_node('p');
+var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Main$about = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('centered-container')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$h2,
+			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$text('Here\'s what I\'m about:')
+				])),
+			A2(
+			$elm$html$Html$span,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$id('blurb')
+				]),
+			_List_fromArray(
+				[
+					$elm$html$Html$text(' I love domain modeling, functional programming, and making code understandable. I\'m on the more extroverted side for a software developer, and I really like getting the chance to understand a domain well enough to explain it to anyone. I believe in collaborating to create the right solution the first time. Recently I\'ve been working in Scala, and that\'s been an absolute blast. ')
+				])),
+			A2($elm$html$Html$br, _List_Nil, _List_Nil)
+		]));
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $author$project$Main$kadenFaceImage = A2(
+	$elm$html$Html$img,
+	_List_fromArray(
+		[
+			$elm$html$Html$Attributes$class('rcorners'),
+			$elm$html$Html$Attributes$src('resources/headshot.jpg'),
+			$elm$html$Html$Attributes$alt('Kaden\'s Face'),
+			A2($elm$html$Html$Attributes$style, 'width', '175px'),
+			A2($elm$html$Html$Attributes$style, 'height', '175px')
+		]),
+	_List_Nil);
+var $elm$html$Html$a = _VirtualDom_node('a');
+var $elm$html$Html$Attributes$href = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'href',
+		_VirtualDom_noJavaScriptUri(url));
+};
+var $author$project$Main$linkBar = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			A2($elm$html$Html$Attributes$style, 'margin', '10px'),
+			A2($elm$html$Html$Attributes$style, 'position', 'absolute'),
+			A2($elm$html$Html$Attributes$style, 'right', '5%')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('https://www.linkedin.com/in/kaden-taylor/')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
+							A2($elm$html$Html$Attributes$style, 'width', '40px'),
+							$elm$html$Html$Attributes$src('resources/logo_linkedin.png'),
+							$elm$html$Html$Attributes$alt('LinkedIn')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('https://github.com/kadenjtaylor')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
+							A2($elm$html$Html$Attributes$style, 'width', '40px'),
+							$elm$html$Html$Attributes$src('resources/logo_github.png'),
+							$elm$html$Html$Attributes$alt('GitHub')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$a,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$href('https://github.com/kadenjtaylor/resumaker/raw/main/latex/kaden_taylor_resume.pdf')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
+							A2($elm$html$Html$Attributes$style, 'width', '40px'),
+							$elm$html$Html$Attributes$src('resources/logo_resume.png'),
+							$elm$html$Html$Attributes$alt('Resume')
+						]),
+					_List_Nil)
+				]))
+		]));
+var $author$project$Main$nameAndLinks = A2(
+	$elm$html$Html$div,
+	_List_fromArray(
+		[
+			A2($elm$html$Html$Attributes$style, 'width', '100%'),
+			A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
+			A2($elm$html$Html$Attributes$style, 'display', 'flex')
+		]),
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'width', '29%')
+				]),
+			_List_fromArray(
+				[$author$project$Main$kadenFaceImage])),
+			A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'width', '30%'),
+					A2($elm$html$Html$Attributes$style, 'margin-top', 'auto')
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$h1,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text('Kaden.DEV')
+						]))
+				])),
+			$author$project$Main$linkBar
+		]));
+var $author$project$Main$header = function (_v0) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$id('header'),
+				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+				A2($elm$html$Html$Attributes$style, 'justify-content', 'space-between')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$id('title-card')
+					]),
+				_List_fromArray(
+					[
+						$author$project$Main$nameAndLinks,
+						A2(
+						$elm$html$Html$span,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('I like building things, solving problems, and building things that solve problems.')
+							]))
+					]))
+			]));
+};
+var $elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 0, a: a};
+};
+var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var $elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			$elm$virtual_dom$VirtualDom$on,
+			event,
+			$elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var $elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		$elm$html$Html$Events$on,
+		'click',
+		$elm$json$Json$Decode$succeed(msg));
+};
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $author$project$Main$gridSquare = F3(
+	function (squareText, imgUrl, destinationUrl) {
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('square'),
+					$elm$html$Html$Events$onClick(
+					$author$project$Domain$LinkClicked(
+						$elm$browser$Browser$External(destinationUrl)))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$src(imgUrl),
+							$elm$html$Html$Attributes$alt(squareText)
+						]),
+					_List_Nil),
+					A2(
+					$elm$html$Html$p,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('title')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(squareText)
+						]))
+				]));
+	});
+var $author$project$Main$projectGrid = function (_v0) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('centered-container')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('grid')
+					]),
+				_List_fromArray(
+					[
+						A3($author$project$Main$gridSquare, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
+						A3($author$project$Main$gridSquare, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
+						A3($author$project$Main$gridSquare, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
+						A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html')
+					]))
+			]));
+};
+var $author$project$Main$projects = function (model) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				$elm$html$Html$Attributes$class('centered-container')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$h2,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Here\'s some stuff I\'m doing:')
+					])),
+				$author$project$Main$projectGrid(model)
+			]));
+};
+var $author$project$Main$homePage = function (model) {
+	return _List_fromArray(
+		[
+			$author$project$Main$header(model),
+			$author$project$Main$about,
+			$author$project$Main$projects(model)
+		]);
+};
 var $author$project$Main$notFoundPage = function (model) {
 	return _List_fromArray(
 		[
@@ -5274,7 +5577,7 @@ var $author$project$Main$notFoundPage = function (model) {
 					_List_fromArray(
 						[
 							$elm$html$Html$text(
-							$elm$url$Url$toString(model.E))
+							$elm$url$Url$toString(model.aC))
 						])),
 					A2(
 					$elm$html$Html$p,
@@ -5282,282 +5585,6 @@ var $author$project$Main$notFoundPage = function (model) {
 					_List_fromArray(
 						[
 							$elm$html$Html$text('404 Page Not Found')
-						]))
-				]))
-		]);
-};
-var $elm$html$Html$a = _VirtualDom_node('a');
-var $elm$json$Json$Encode$string = _Json_wrap;
-var $elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			$elm$json$Json$Encode$string(string));
-	});
-var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $elm$html$Html$Attributes$href = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'href',
-		_VirtualDom_noJavaScriptUri(url));
-};
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$li = _VirtualDom_node('li');
-var $elm$html$Html$nav = _VirtualDom_node('nav');
-var $elm$html$Html$span = _VirtualDom_node('span');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $elm$html$Html$ul = _VirtualDom_node('ul');
-var $author$project$Main$oldPage = function (_v0) {
-	return _List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$id('header')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$div,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('title-card')
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$h1,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Kaden.dev')
-								])),
-							A2(
-							$elm$html$Html$span,
-							_List_Nil,
-							_List_fromArray(
-								[
-									$elm$html$Html$text('I like building things, solving problems, and building things that solve problems.')
-								]))
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('centered-container')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Here\'s what I look like:')
-						])),
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$class('rcorners'),
-							$elm$html$Html$Attributes$src('resources/headshot.jpg'),
-							$elm$html$Html$Attributes$alt('Kaden\'s Face')
-						]),
-					_List_Nil)
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('centered-container')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Here\'s what I\'m about:')
-						])),
-					A2(
-					$elm$html$Html$span,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$id('blurb')
-						]),
-					_List_fromArray(
-						[
-							$elm$html$Html$text(' I love domain modeling, functional programming, and making code understandable. I\'m on the more extroverted side for a software developer, and I really like getting the chance to understand a domain well enough to explain it to anyone. I believe in collaborating to create the right solution the first time. Recently I\'ve been working in Scala, and that\'s been an absolute blast. ')
-						])),
-					A2($elm$html$Html$br, _List_Nil, _List_Nil)
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('centered-container')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Here are my links:')
-						])),
-					A2(
-					$elm$html$Html$nav,
-					_List_Nil,
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://www.linkedin.com/in/kaden-taylor/')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Linkedin')
-								])),
-							$elm$html$Html$text(' | '),
-							A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://github.com/kadenjtaylor')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Github')
-								])),
-							$elm$html$Html$text(' | '),
-							A2(
-							$elm$html$Html$a,
-							_List_fromArray(
-								[
-									$elm$html$Html$Attributes$href('https://github.com/kadenjtaylor/resumaker/raw/main/latex/kaden_taylor_resume.pdf')
-								]),
-							_List_fromArray(
-								[
-									$elm$html$Html$text('Resume')
-								]))
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('centered-container')
-				]),
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$h2,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text('Here\'s some stuff I\'m doing:')
-						])),
-					A2(
-					$elm$html$Html$ul,
-					_List_fromArray(
-						[
-							A2($elm$html$Html$Attributes$style, 'list-style', 'none')
-						]),
-					_List_fromArray(
-						[
-							A2(
-							$elm$html$Html$li,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin', '10px')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href('https://lichess.org/@/kadenjtaylor')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Playing Chess')
-										]))
-								])),
-							A2(
-							$elm$html$Html$li,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin', '10px')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href('pages/arithmetic_demo')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Visualizing Symbolic Manipulation')
-										]))
-								])),
-							A2(
-							$elm$html$Html$li,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin', '10px')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href('pages/slider_demo')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Making slideshows in Rust+WASM')
-										]))
-								])),
-							A2(
-							$elm$html$Html$li,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'margin', '10px')
-								]),
-							_List_fromArray(
-								[
-									A2(
-									$elm$html$Html$a,
-									_List_fromArray(
-										[
-											$elm$html$Html$Attributes$href('pages/musings/software_doesnt_have_clay.html')
-										]),
-									_List_fromArray(
-										[
-											$elm$html$Html$text('Thinking about Software Clay')
-										]))
-								]))
 						]))
 				]))
 		]);
@@ -5576,7 +5603,7 @@ var $author$project$Main$testLink = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						$elm$url$Url$toString(model.E))
+						$elm$url$Url$toString(model.aC))
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5588,29 +5615,29 @@ var $author$project$Main$testLink = function (model) {
 			]));
 };
 var $author$project$Main$view = function (model) {
-	var _v0 = model.E.Y;
+	var _v0 = model.aC.W;
 	switch (_v0) {
 		case '/':
 			return {
-				F: $author$project$Main$oldPage(model),
-				M: 'Kaden.DEV'
+				E: $author$project$Main$homePage(model),
+				L: 'Kaden.DEV'
 			};
 		case '/stable-test-link':
 			return {
-				F: _List_fromArray(
+				E: _List_fromArray(
 					[
 						$author$project$Main$testLink(model)
 					]),
-				M: 'Stable Test Link'
+				L: 'Stable Test Link'
 			};
 		default:
 			return {
-				F: $author$project$Main$notFoundPage(model),
-				M: 'NOT FOUND'
+				E: $author$project$Main$notFoundPage(model),
+				L: 'NOT FOUND'
 			};
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
-	{av: $author$project$Main$init, ax: $author$project$Main$UrlChanged, ay: $author$project$Main$LinkClicked, aB: $author$project$Main$subscriptions, aC: $author$project$Main$update, aD: $author$project$Main$view});
+	{at: $author$project$Main$init, aw: $author$project$Domain$UrlChanged, ax: $author$project$Domain$LinkClicked, aA: $author$project$Main$subscriptions, aB: $author$project$Main$update, aD: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

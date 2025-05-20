@@ -10,4 +10,4 @@ elm make src/Main.elm --optimize --output="$OUTPUT_FILE"
 mkdir -p $DEPLOY_DIR
 
 # "deploy" it to the docs/ directory, where it can be imported by html files
-cp "$OUTPUT_FILE" $DEPLOY_DIR
+mv --debug "$OUTPUT_FILE" $DEPLOY_DIR
