@@ -211,6 +211,7 @@ projectGrid _ =
             , gridSquare "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo"
             , gridSquare "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
             , gridSquare "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
+            , gridSquare "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
             {- Add more squares here -}
             ]
         ]

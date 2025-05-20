@@ -5535,7 +5535,8 @@ var $author$project$Main$projectGrid = function (_v0) {
 						A3($author$project$Main$gridSquare, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
 						A3($author$project$Main$gridSquare, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
 						A3($author$project$Main$gridSquare, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
-						A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html')
+						A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
+						A3($author$project$Main$gridSquare, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
 					]))
 			]));
 };
