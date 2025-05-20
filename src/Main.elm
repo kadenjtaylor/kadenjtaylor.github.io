@@ -106,6 +106,15 @@ testLink model =
             [ text (Url.toString model.url) ]
         , p []
             [ text "You should be able to link to this, even though it doesn't exist until you ask for it and Github Pages fails to locate it :)" ]
+        , p []
+            [ text "What you're seeing right now is what happens when you copy your elm.js file into your custom 404 page." ]
+        , ul []
+            [ li [] [ text "Github pages tries to find a static resource at this url" ]
+            , li [] [ text "It fails, so it returns a 404 along with showing the content of my custom 404.html page" ]
+            , li [] [ text "It's then handled by the transpiled-to-js elm code, which decides based on the given url what to show" ]
+            ]
+        , p []
+            [ text "If you're reading this, then it means it worked!" ]
         ]
 
 

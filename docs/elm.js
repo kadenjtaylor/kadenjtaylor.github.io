@@ -5666,6 +5666,8 @@ var $author$project$Main$notFoundPage = function (model) {
 				]))
 		]);
 };
+var $elm$html$Html$li = _VirtualDom_node('li');
+var $elm$html$Html$ul = _VirtualDom_node('ul');
 var $author$project$Main$testLink = function (model) {
 	return A2(
 		$elm$html$Html$div,
@@ -5688,6 +5690,47 @@ var $author$project$Main$testLink = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text('You should be able to link to this, even though it doesn\'t exist until you ask for it and Github Pages fails to locate it :)')
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('What you\'re seeing right now is what happens when you copy your elm.js file into your custom 404 page.')
+					])),
+				A2(
+				$elm$html$Html$ul,
+				_List_Nil,
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$li,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('Github pages tries to find a static resource at this url')
+							])),
+						A2(
+						$elm$html$Html$li,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('It fails, so it returns a 404 along with showing the content of my custom 404.html page')
+							])),
+						A2(
+						$elm$html$Html$li,
+						_List_Nil,
+						_List_fromArray(
+							[
+								$elm$html$Html$text('It\'s then handled by the transpiled-to-js elm code, which decides based on the given url what to show')
+							]))
+					])),
+				A2(
+				$elm$html$Html$p,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('If you\'re reading this, then it means it worked!')
 					]))
 			]));
 };
