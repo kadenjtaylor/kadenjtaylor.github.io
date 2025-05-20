@@ -5306,6 +5306,7 @@ var $elm$html$Html$Attributes$src = function (url) {
 };
 var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $elm$html$Html$Attributes$title = $elm$html$Html$Attributes$stringProperty('title');
 var $author$project$Main$kadenFaceImage = A2(
 	$elm$html$Html$img,
 	_List_fromArray(
@@ -5314,7 +5315,8 @@ var $author$project$Main$kadenFaceImage = A2(
 			$elm$html$Html$Attributes$src('resources/headshot.jpg'),
 			$elm$html$Html$Attributes$alt('Kaden\'s Face'),
 			A2($elm$html$Html$Attributes$style, 'width', '175px'),
-			A2($elm$html$Html$Attributes$style, 'height', '175px')
+			A2($elm$html$Html$Attributes$style, 'height', '175px'),
+			$elm$html$Html$Attributes$title('Kaden\'s Face')
 		]),
 	_List_Nil);
 var $elm$html$Html$a = _VirtualDom_node('a');
@@ -5349,7 +5351,8 @@ var $author$project$Main$linkBar = A2(
 							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
 							A2($elm$html$Html$Attributes$style, 'width', '40px'),
 							$elm$html$Html$Attributes$src('resources/logo_linkedin.png'),
-							$elm$html$Html$Attributes$alt('LinkedIn')
+							$elm$html$Html$Attributes$alt('LinkedIn'),
+							$elm$html$Html$Attributes$title('Linkedin')
 						]),
 					_List_Nil)
 				])),
@@ -5368,7 +5371,8 @@ var $author$project$Main$linkBar = A2(
 							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
 							A2($elm$html$Html$Attributes$style, 'width', '40px'),
 							$elm$html$Html$Attributes$src('resources/logo_github.png'),
-							$elm$html$Html$Attributes$alt('GitHub')
+							$elm$html$Html$Attributes$alt('GitHub'),
+							$elm$html$Html$Attributes$title('Github')
 						]),
 					_List_Nil)
 				])),
@@ -5387,7 +5391,8 @@ var $author$project$Main$linkBar = A2(
 							A2($elm$html$Html$Attributes$style, 'margin-right', '20px'),
 							A2($elm$html$Html$Attributes$style, 'width', '40px'),
 							$elm$html$Html$Attributes$src('resources/logo_resume.png'),
-							$elm$html$Html$Attributes$alt('Resume')
+							$elm$html$Html$Attributes$alt('Resume'),
+							$elm$html$Html$Attributes$title('Resume')
 						]),
 					_List_Nil)
 				]))
