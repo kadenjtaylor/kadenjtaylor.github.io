@@ -131,32 +131,8 @@ linkBar =
         , a [ href "https://github.com/kadenjtaylor/resumaker/raw/main/latex/kaden_taylor_resume.pdf" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_resume.png", alt "Resume", title "Resume" ] [] ]
         ]
 
-
-kadenFaceImage : Html Msg
-kadenFaceImage =
-    img
-        [ class "rcorners"
-        , src "resources/headshot.jpg"
-        , alt "Kaden's Face"
-        , style "width" "175px"
-        , style "height" "175px"
-        , title "Kaden's Face"
-        ]
-        []
-
-
-nameAndLinks : Html Msg
-nameAndLinks =
-    div [ style "width" "100%", style "overflow" "hidden", style "display" "flex" ]
-        [ div [ style "width" "29%" ]
-            [ kadenFaceImage ]
-        , div [ style "width" "30%", style "margin-top" "auto" ] [ h1 [] [ text "Kaden.DEV" ] ]
-        , linkBar
-        ]
-
-
-header : Model -> Html Msg
-header _ =
+header : Html Msg
+header =
     div
         [ id "header"
         , style "display" "flex"
@@ -165,7 +141,21 @@ header _ =
         [ div
             [ id "title-card"
             ]
-            [ nameAndLinks
+            [ div [ style "width" "100%", style "overflow" "hidden", style "display" "flex" ]
+                [ div [ style "width" "29%" ]
+                    [ img
+                        [ class "rcorners"
+                        , src "resources/headshot.jpg"
+                        , alt "Kaden's Face"
+                        , style "width" "175px"
+                        , style "height" "175px"
+                        , title "Kaden's Face"
+                        ]
+                        []
+                    ]
+                , div [ style "width" "30%", style "margin-top" "auto" ] [ h1 [] [ text "Kaden.DEV" ] ]
+                , linkBar
+                ]
             , span []
                 [ text "I like building things, solving problems, and building things that solve problems." ]
             ]
@@ -227,7 +217,6 @@ about =
             ]
         ]
 
-
 projects : Model -> Html Msg
 projects model =
     div
@@ -276,7 +265,7 @@ projectGrid _ =
 
 homePage : Model -> List (Html Msg)
 homePage model =
-    [ header model
+    [ header
     , about
     , projects model
     ]

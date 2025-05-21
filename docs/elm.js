@@ -5346,29 +5346,10 @@ var $author$project$Main$about = A2(
 						]))
 				]))
 		]));
-var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$html$Html$Attributes$title = $elm$html$Html$Attributes$stringProperty('title');
-var $author$project$Main$kadenFaceImage = A2(
-	$elm$html$Html$img,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('rcorners'),
-			$elm$html$Html$Attributes$src('resources/headshot.jpg'),
-			$elm$html$Html$Attributes$alt('Kaden\'s Face'),
-			A2($elm$html$Html$Attributes$style, 'width', '175px'),
-			A2($elm$html$Html$Attributes$style, 'height', '175px'),
-			$elm$html$Html$Attributes$title('Kaden\'s Face')
-		]),
-	_List_Nil);
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -5376,6 +5357,13 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$html$Html$Attributes$title = $elm$html$Html$Attributes$stringProperty('title');
 var $author$project$Main$linkBar = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
@@ -5467,13 +5455,13 @@ var $author$project$Main$linkBar = A2(
 					_List_Nil)
 				]))
 		]));
-var $author$project$Main$nameAndLinks = A2(
+var $author$project$Main$header = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
 		[
-			A2($elm$html$Html$Attributes$style, 'width', '100%'),
-			A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
-			A2($elm$html$Html$Attributes$style, 'display', 'flex')
+			$elm$html$Html$Attributes$id('header'),
+			A2($elm$html$Html$Attributes$style, 'display', 'flex'),
+			A2($elm$html$Html$Attributes$style, 'justify-content', 'space-between')
 		]),
 	_List_fromArray(
 		[
@@ -5481,59 +5469,69 @@ var $author$project$Main$nameAndLinks = A2(
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					A2($elm$html$Html$Attributes$style, 'width', '29%')
-				]),
-			_List_fromArray(
-				[$author$project$Main$kadenFaceImage])),
-			A2(
-			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					A2($elm$html$Html$Attributes$style, 'width', '30%'),
-					A2($elm$html$Html$Attributes$style, 'margin-top', 'auto')
+					$elm$html$Html$Attributes$id('title-card')
 				]),
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$h1,
+					$elm$html$Html$div,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'width', '100%'),
+							A2($elm$html$Html$Attributes$style, 'overflow', 'hidden'),
+							A2($elm$html$Html$Attributes$style, 'display', 'flex')
+						]),
+					_List_fromArray(
+						[
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'width', '29%')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$img,
+									_List_fromArray(
+										[
+											$elm$html$Html$Attributes$class('rcorners'),
+											$elm$html$Html$Attributes$src('resources/headshot.jpg'),
+											$elm$html$Html$Attributes$alt('Kaden\'s Face'),
+											A2($elm$html$Html$Attributes$style, 'width', '175px'),
+											A2($elm$html$Html$Attributes$style, 'height', '175px'),
+											$elm$html$Html$Attributes$title('Kaden\'s Face')
+										]),
+									_List_Nil)
+								])),
+							A2(
+							$elm$html$Html$div,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'width', '30%'),
+									A2($elm$html$Html$Attributes$style, 'margin-top', 'auto')
+								]),
+							_List_fromArray(
+								[
+									A2(
+									$elm$html$Html$h1,
+									_List_Nil,
+									_List_fromArray(
+										[
+											$elm$html$Html$text('Kaden.DEV')
+										]))
+								])),
+							$author$project$Main$linkBar
+						])),
+					A2(
+					$elm$html$Html$span,
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('Kaden.DEV')
+							$elm$html$Html$text('I like building things, solving problems, and building things that solve problems.')
 						]))
-				])),
-			$author$project$Main$linkBar
+				]))
 		]));
-var $author$project$Main$header = function (_v0) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$id('header'),
-				A2($elm$html$Html$Attributes$style, 'display', 'flex'),
-				A2($elm$html$Html$Attributes$style, 'justify-content', 'space-between')
-			]),
-		_List_fromArray(
-			[
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$id('title-card')
-					]),
-				_List_fromArray(
-					[
-						$author$project$Main$nameAndLinks,
-						A2(
-						$elm$html$Html$span,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('I like building things, solving problems, and building things that solve problems.')
-							]))
-					]))
-			]));
-};
 var $elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 0, a: a};
 };
@@ -5632,7 +5630,7 @@ var $author$project$Main$projects = function (model) {
 var $author$project$Main$homePage = function (model) {
 	return _List_fromArray(
 		[
-			$author$project$Main$header(model),
+			$author$project$Main$header,
 			$author$project$Main$about,
 			$author$project$Main$projects(model)
 		]);
