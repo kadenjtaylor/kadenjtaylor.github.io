@@ -192,7 +192,6 @@ blurbStyles =
     , style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"
     ]
 
-
 about : Html Msg
 about =
     div
@@ -216,6 +215,7 @@ about =
                 ]
             ]
         ]
+
 
 projects : Model -> Html Msg
 projects model =
