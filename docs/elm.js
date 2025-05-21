@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.P.z)
+	if (region.J.z === region.O.z)
 	{
 		return 'on line ' + region.J.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.P.z;
+	return 'on lines ' + region.J.z + ' through ' + region.O.z;
 }
 
 
@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.at,
-		impl.aB,
-		impl.aA,
+		impl.au,
+		impl.aE,
+		impl.aC,
 		function() { return function() {} }
 	);
 });
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.at,
-		impl.aB,
-		impl.aA,
+		impl.au,
+		impl.aE,
+		impl.aC,
 		function(sendToApp, initialModel) {
-			var view = impl.aD;
+			var view = impl.aF;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.at,
-		impl.aB,
-		impl.aA,
+		impl.au,
+		impl.aE,
+		impl.aC,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
-			var view = impl.aD;
+			var view = impl.aF;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3997,7 +3997,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.L) && (_VirtualDom_doc.title = title = doc.L);
+				(title !== doc.aD) && (_VirtualDom_doc.title = title = doc.aD);
 			});
 		}
 	);
@@ -4053,8 +4053,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aw;
-	var onUrlRequest = impl.ax;
+	var onUrlChange = impl.ax;
+	var onUrlRequest = impl.ay;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.aa === next.aa
-							&& curr.T === next.T
-							&& curr.Y.a === next.Y.a
+							&& curr._ === next._
+							&& curr.S === next.S
+							&& curr.X.a === next.X.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		at: function(flags)
+		au: function(flags)
 		{
-			return A3(impl.at, flags, _Browser_getUrl(), key);
+			return A3(impl.au, flags, _Browser_getUrl(), key);
 		},
-		aD: impl.aD,
-		aB: impl.aB,
-		aA: impl.aA
+		aF: impl.aF,
+		aE: impl.aE,
+		aC: impl.aC
 	});
 }
 
@@ -4247,12 +4247,12 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		ae: _Browser_getScene(),
+		ad: _Browser_getScene(),
 		ah: {
 			aj: _Browser_window.pageXOffset,
 			ak: _Browser_window.pageYOffset,
 			ai: _Browser_doc.documentElement.clientWidth,
-			S: _Browser_doc.documentElement.clientHeight
+			R: _Browser_doc.documentElement.clientHeight
 		}
 	};
 }
@@ -4263,7 +4263,7 @@ function _Browser_getScene()
 	var elem = _Browser_doc.documentElement;
 	return {
 		ai: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
-		S: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
+		R: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
 
@@ -4286,15 +4286,15 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			ae: {
+			ad: {
 				ai: node.scrollWidth,
-				S: node.scrollHeight
+				R: node.scrollHeight
 			},
 			ah: {
 				aj: node.scrollLeft,
 				ak: node.scrollTop,
 				ai: node.clientWidth,
-				S: node.clientHeight
+				R: node.clientHeight
 			}
 		};
 	});
@@ -4324,18 +4324,18 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			ae: _Browser_getScene(),
+			ad: _Browser_getScene(),
 			ah: {
 				aj: x,
 				ak: y,
 				ai: _Browser_doc.documentElement.clientWidth,
-				S: _Browser_doc.documentElement.clientHeight
+				R: _Browser_doc.documentElement.clientHeight
 			},
 			ap: {
 				aj: x + rect.left,
 				ak: y + rect.top,
 				ai: rect.width,
-				S: rect.height
+				R: rect.height
 			}
 		};
 	});
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {R: fragment, T: host, W: path, Y: port_, aa: protocol, ab: query};
+		return {Q: fragment, S: host, V: path, X: port_, _: protocol, aa: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5159,16 +5159,17 @@ var $elm$core$Task$perform = F2(
 			A2($elm$core$Task$map, toMessage, task));
 	});
 var $elm$browser$Browser$application = _Browser_application;
-var $author$project$Domain$Model = F2(
-	function (key, url) {
-		return {au: key, aC: url};
+var $author$project$Domain$Model = F3(
+	function (key, url, projects) {
+		return {av: key, aA: projects, ag: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
+var $author$project$Main$projects = _List_Nil;
 var $author$project$Main$init = F3(
 	function (_v0, url, key) {
 		return _Utils_Tuple2(
-			A2($author$project$Domain$Model, key, url),
+			A3($author$project$Domain$Model, key, url, $author$project$Main$projects),
 			$elm$core$Platform$Cmd$none);
 	});
 var $elm$core$Platform$Sub$batch = _Platform_batch;
@@ -5200,7 +5201,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.aa;
+		var _v0 = url._;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5210,17 +5211,17 @@ var $elm$url$Url$toString = function (url) {
 	return A3(
 		$elm$url$Url$addPrefixed,
 		'#',
-		url.R,
+		url.Q,
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.ab,
+			url.aa,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url.Y,
-					_Utils_ap(http, url.T)),
-				url.W)));
+					url.X,
+					_Utils_ap(http, url.S)),
+				url.V)));
 };
 var $author$project$Main$update = F2(
 	function (msg, model) {
@@ -5228,14 +5229,14 @@ var $author$project$Main$update = F2(
 			var urlRequest = msg.a;
 			if (!urlRequest.$) {
 				var url = urlRequest.a;
-				return A2($elm$core$String$startsWith, '/pages/', url.W) ? _Utils_Tuple2(
+				return A2($elm$core$String$startsWith, '/pages/', url.V) ? _Utils_Tuple2(
 					model,
 					$elm$browser$Browser$Navigation$load(
 						$elm$url$Url$toString(url))) : _Utils_Tuple2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.au,
+						model.av,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5248,7 +5249,7 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{aC: url}),
+					{ag: url}),
 				$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5275,7 +5276,7 @@ var $elm$html$Html$div = _VirtualDom_node('div');
 var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
-var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\n';
+var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\nRight now I\'m looking for work that lets me feel really useful - shoot me an email if you think I\nmight be a good fit for a project you know about!\n';
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
@@ -5593,38 +5594,35 @@ var $author$project$Main$projectGrid = function (_v0) {
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('grid')
-					]),
-				_List_fromArray(
-					[
-						A3($author$project$Main$gridSquare, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
-						A3($author$project$Main$gridSquare, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
-						A3($author$project$Main$gridSquare, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
-						A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
-						A3($author$project$Main$gridSquare, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
-					]))
-			]));
-};
-var $author$project$Main$projects = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('centered-container')
-			]),
-		_List_fromArray(
-			[
-				A2(
 				$elm$html$Html$h2,
 				_List_Nil,
 				_List_fromArray(
 					[
 						$elm$html$Html$text('Here\'s some stuff I\'m doing:')
 					])),
-				$author$project$Main$projectGrid(model)
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('centered-container')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						$elm$html$Html$div,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('grid')
+							]),
+						_List_fromArray(
+							[
+								A3($author$project$Main$gridSquare, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
+								A3($author$project$Main$gridSquare, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
+								A3($author$project$Main$gridSquare, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
+								A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
+								A3($author$project$Main$gridSquare, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
+							]))
+					]))
 			]));
 };
 var $author$project$Main$homePage = function (model) {
@@ -5632,7 +5630,7 @@ var $author$project$Main$homePage = function (model) {
 		[
 			$author$project$Main$header,
 			$author$project$Main$about,
-			$author$project$Main$projects(model)
+			$author$project$Main$projectGrid(model.aA)
 		]);
 };
 var $elm$html$Html$br = _VirtualDom_node('br');
@@ -5652,7 +5650,7 @@ var $author$project$Main$notFoundPage = function (model) {
 					_List_fromArray(
 						[
 							$elm$html$Html$text(
-							$elm$url$Url$toString(model.aC))
+							$elm$url$Url$toString(model.ag))
 						])),
 					A2(
 					$elm$html$Html$p,
@@ -5680,7 +5678,7 @@ var $author$project$Main$testLink = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						$elm$url$Url$toString(model.aC))
+						$elm$url$Url$toString(model.ag))
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5760,12 +5758,12 @@ var $author$project$Main$testLink = function (model) {
 			]));
 };
 var $author$project$Main$view = function (model) {
-	var _v0 = model.aC.W;
+	var _v0 = model.ag.V;
 	switch (_v0) {
 		case '/':
 			return {
 				E: $author$project$Main$homePage(model),
-				L: 'Kaden.DEV'
+				aD: 'Kaden.DEV'
 			};
 		case '/stable-test-link':
 			return {
@@ -5773,16 +5771,16 @@ var $author$project$Main$view = function (model) {
 					[
 						$author$project$Main$testLink(model)
 					]),
-				L: 'Stable Test Link'
+				aD: 'Stable Test Link'
 			};
 		default:
 			return {
 				E: $author$project$Main$notFoundPage(model),
-				L: 'NOT FOUND'
+				aD: 'NOT FOUND'
 			};
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
-	{at: $author$project$Main$init, aw: $author$project$Domain$UrlChanged, ax: $author$project$Domain$LinkClicked, aA: $author$project$Main$subscriptions, aB: $author$project$Main$update, aD: $author$project$Main$view});
+	{au: $author$project$Main$init, ax: $author$project$Domain$UrlChanged, ay: $author$project$Domain$LinkClicked, aC: $author$project$Main$subscriptions, aE: $author$project$Main$update, aF: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

@@ -29,10 +29,15 @@ main =
 -- MODEL
 
 
+projects : List ProjectSquare
+projects =
+    []
+
+
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
 init _ url key =
     -- flags
-    ( Model key url, Cmd.none )
+    ( Model key url projects, Cmd.none )
 
 
 
@@ -131,6 +136,7 @@ linkBar =
         , a [ href "https://github.com/kadenjtaylor/resumaker/raw/main/latex/kaden_taylor_resume.pdf" ] [ img [ style "margin-right" "20px", style "width" "40px", src "resources/logo_resume.png", alt "Resume", title "Resume" ] [] ]
         ]
 
+
 header : Html Msg
 header =
     div
@@ -169,6 +175,8 @@ I'm on the more extroverted side for a software developer, and I LOVE getting a 
 systems that are meant to be understood and upgraded, not patched into oblivion and thrown away
 when the weight of all the lost system knowledge becomes too heavy. Recently I've been doing a ton
 of CAD and 3d printing, and that's been a wonderful creative outlet to hone my prototyping skills.
+Right now I'm looking for work that lets me feel really useful - shoot me an email if you think I
+might be a good fit for a project you know about!
 """
 
 
@@ -191,6 +199,7 @@ blurbStyles =
     , style "border-radius" "20px"
     , style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"
     ]
+
 
 about : Html Msg
 about =
@@ -217,14 +226,27 @@ about =
         ]
 
 
-projects : Model -> Html Msg
-projects model =
+projectGrid : List ProjectSquare -> Html Msg
+projectGrid _ =
+    -- TODO: generate the grid squares by mapping the projects in the model
     div
         [ class "centered-container"
         ]
         [ h2 []
             [ text "Here's some stuff I'm doing:" ]
-        , projectGrid model
+        , div [ class "centered-container" ]
+            [ div
+                [ class "grid"
+                ]
+                [ gridSquare "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor"
+                , gridSquare "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo"
+                , gridSquare "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
+                , gridSquare "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
+                , gridSquare "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
+
+                {- Add more squares here -}
+                ]
+            ]
         ]
 
 
@@ -246,28 +268,11 @@ gridSquare squareText imgUrl destinationUrl =
         ]
 
 
-projectGrid : Model -> Html Msg
-projectGrid _ =
-    div [ class "centered-container" ]
-        [ div
-            [ class "grid"
-            ]
-            [ gridSquare "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor"
-            , gridSquare "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo"
-            , gridSquare "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
-            , gridSquare "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
-            , gridSquare "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
-
-            {- Add more squares here -}
-            ]
-        ]
-
-
 homePage : Model -> List (Html Msg)
 homePage model =
     [ header
     , about
-    , projects model
+    , projectGrid model.projects
     ]
 
 
