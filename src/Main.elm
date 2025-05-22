@@ -316,7 +316,7 @@ homePage model =
 
 notFoundPage : Model -> List (Html Msg)
 notFoundPage model =
-    [ div []
+    [ div [ class "centered-container" ]
         [ br []
             []
         , br []

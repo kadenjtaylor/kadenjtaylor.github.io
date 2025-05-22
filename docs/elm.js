@@ -5682,7 +5682,10 @@ var $author$project$Main$notFoundPage = function (model) {
 		[
 			A2(
 			$elm$html$Html$div,
-			_List_Nil,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('centered-container')
+				]),
 			_List_fromArray(
 				[
 					A2($elm$html$Html$br, _List_Nil, _List_Nil),
