@@ -97,42 +97,10 @@ view model =
             , body = homePage model
             }
 
-        "/stable-test-link" ->
-            { title = "Stable Test Link"
-            , body = [ testLink model ]
-            }
-
         _ ->
             { title = "NOT FOUND"
             , body = notFoundPage model
             }
-
-
-testLink : Model -> Html Msg
-testLink model =
-    div []
-        [ br []
-            []
-        , br []
-            []
-        , h1 []
-            [ text (Url.toString model.url) ]
-        , p []
-            [ text "You should be able to link to this, even though it doesn't exist until you ask for it and Github Pages fails to locate it :)" ]
-        , p []
-            [ text "What you're seeing right now is what happens when you copy your elm.js file into your custom 404 page." ]
-        , div [ style "width" "fit-content", style "margin" "auto" ]
-            [ h2 [] [ text "How does it work?" ]
-            , ol [ style "text-align" "left" ]
-                [ li [] [ text "You navigate directly to this url, rather than from inside the site" ]
-                , li [] [ text "Github pages tries to find a static resource at this url" ]
-                , li [] [ text "It fails, so it returns a 404 along with showing the content of my custom 404.html page" ]
-                , li [] [ text "It's then handed over to the transpiled-to-js elm code, which decides what to show based on the given url" ]
-                ]
-            ]
-        , p []
-            [ text "If you're reading this, then it means it worked!" ]
-        ]
 
 
 linkBar : Html Msg

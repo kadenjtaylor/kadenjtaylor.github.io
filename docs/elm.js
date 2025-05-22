@@ -784,11 +784,11 @@ function _Debug_crash_UNUSED(identifier, fact1, fact2, fact3, fact4)
 
 function _Debug_regionToString(region)
 {
-	if (region.J.z === region.O.z)
+	if (region.I.z === region.O.z)
 	{
-		return 'on line ' + region.J.z;
+		return 'on line ' + region.I.z;
 	}
-	return 'on lines ' + region.J.z + ' through ' + region.O.z;
+	return 'on lines ' + region.I.z + ' through ' + region.O.z;
 }
 
 
@@ -2720,8 +2720,8 @@ var _VirtualDom_mapEventRecord = F2(function(func, record)
 {
 	return {
 		o: func(record.o),
-		K: record.K,
-		H: record.H
+		J: record.J,
+		G: record.G
 	}
 });
 
@@ -2990,10 +2990,10 @@ function _VirtualDom_makeCallback(eventNode, initialHandler)
 
 		var value = result.a;
 		var message = !tag ? value : tag < 3 ? value.a : value.o;
-		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.K;
+		var stopPropagation = tag == 1 ? value.b : tag == 3 && value.J;
 		var currentEventNode = (
 			stopPropagation && event.stopPropagation(),
-			(tag == 2 ? value.b : tag == 3 && value.H) && event.preventDefault(),
+			(tag == 2 ? value.b : tag == 3 && value.G) && event.preventDefault(),
 			eventNode
 		);
 		var tagger;
@@ -3983,7 +3983,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 		impl.aE,
 		impl.aD,
 		function(sendToApp, initialModel) {
-			var divertHrefToApp = impl.I && impl.I(sendToApp)
+			var divertHrefToApp = impl.H && impl.H(sendToApp)
 			var view = impl.aF;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
@@ -3992,7 +3992,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 			{
 				_VirtualDom_divertHrefToApp = divertHrefToApp;
 				var doc = view(model);
-				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.E);
+				var nextNode = _VirtualDom_node('body')(_List_Nil)(doc.L);
 				var patches = _VirtualDom_diff(currNode, nextNode);
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
@@ -4058,7 +4058,7 @@ function _Browser_application(impl)
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
-		I: function(sendToApp)
+		H: function(sendToApp)
 		{
 			key.a = sendToApp;
 			_Browser_window.addEventListener('popstate', key);
@@ -5708,122 +5708,18 @@ var $author$project$Main$notFoundPage = function (model) {
 				]))
 		]);
 };
-var $elm$html$Html$li = _VirtualDom_node('li');
-var $elm$html$Html$ol = _VirtualDom_node('ol');
-var $author$project$Main$testLink = function (model) {
-	return A2(
-		$elm$html$Html$div,
-		_List_Nil,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$br, _List_Nil, _List_Nil),
-				A2($elm$html$Html$br, _List_Nil, _List_Nil),
-				A2(
-				$elm$html$Html$h1,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text(
-						$elm$url$Url$toString(model.ah))
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('You should be able to link to this, even though it doesn\'t exist until you ask for it and Github Pages fails to locate it :)')
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('What you\'re seeing right now is what happens when you copy your elm.js file into your custom 404 page.')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'width', 'fit-content'),
-						A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-					]),
-				_List_fromArray(
-					[
-						A2(
-						$elm$html$Html$h2,
-						_List_Nil,
-						_List_fromArray(
-							[
-								$elm$html$Html$text('How does it work?')
-							])),
-						A2(
-						$elm$html$Html$ol,
-						_List_fromArray(
-							[
-								A2($elm$html$Html$Attributes$style, 'text-align', 'left')
-							]),
-						_List_fromArray(
-							[
-								A2(
-								$elm$html$Html$li,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('You navigate directly to this url, rather than from inside the site')
-									])),
-								A2(
-								$elm$html$Html$li,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('Github pages tries to find a static resource at this url')
-									])),
-								A2(
-								$elm$html$Html$li,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('It fails, so it returns a 404 along with showing the content of my custom 404.html page')
-									])),
-								A2(
-								$elm$html$Html$li,
-								_List_Nil,
-								_List_fromArray(
-									[
-										$elm$html$Html$text('It\'s then handed over to the transpiled-to-js elm code, which decides what to show based on the given url')
-									]))
-							]))
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_Nil,
-				_List_fromArray(
-					[
-						$elm$html$Html$text('If you\'re reading this, then it means it worked!')
-					]))
-			]));
-};
 var $author$project$Main$view = function (model) {
 	var _v0 = model.ah.V;
-	switch (_v0) {
-		case '/':
-			return {
-				E: $author$project$Main$homePage(model),
-				ag: 'Kaden.DEV'
-			};
-		case '/stable-test-link':
-			return {
-				E: _List_fromArray(
-					[
-						$author$project$Main$testLink(model)
-					]),
-				ag: 'Stable Test Link'
-			};
-		default:
-			return {
-				E: $author$project$Main$notFoundPage(model),
-				ag: 'NOT FOUND'
-			};
+	if (_v0 === '/') {
+		return {
+			L: $author$project$Main$homePage(model),
+			ag: 'Kaden.DEV'
+		};
+	} else {
+		return {
+			L: $author$project$Main$notFoundPage(model),
+			ag: 'NOT FOUND'
+		};
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
