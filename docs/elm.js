@@ -5165,7 +5165,26 @@ var $author$project$Domain$Model = F3(
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
-var $author$project$Main$projects = _List_Nil;
+var $author$project$Domain$External = function (a) {
+	return {$: 1, a: a};
+};
+var $author$project$Domain$ExternalProject = F3(
+	function (title, imgUrl, url) {
+		return {as: imgUrl, aD: title, ag: url};
+	});
+var $author$project$Main$projects = _List_fromArray(
+	[
+		$author$project$Domain$External(
+		A3($author$project$Domain$ExternalProject, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor')),
+		$author$project$Domain$External(
+		A3($author$project$Domain$ExternalProject, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo')),
+		$author$project$Domain$External(
+		A3($author$project$Domain$ExternalProject, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo')),
+		$author$project$Domain$External(
+		A3($author$project$Domain$ExternalProject, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html')),
+		$author$project$Domain$External(
+		A3($author$project$Domain$ExternalProject, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker'))
+	]);
 var $author$project$Main$init = F3(
 	function (_v0, url, key) {
 		return _Utils_Tuple2(
@@ -5551,8 +5570,9 @@ var $elm$html$Html$Events$onClick = function (msg) {
 		$elm$json$Json$Decode$succeed(msg));
 };
 var $elm$html$Html$p = _VirtualDom_node('p');
-var $author$project$Main$gridSquare = F3(
-	function (squareText, imgUrl, destinationUrl) {
+var $author$project$Main$gridSquare = function (proj) {
+	if (proj.$ === 1) {
+		var ep = proj.a;
 		return A2(
 			$elm$html$Html$div,
 			_List_fromArray(
@@ -5560,7 +5580,7 @@ var $author$project$Main$gridSquare = F3(
 					$elm$html$Html$Attributes$class('square'),
 					$elm$html$Html$Events$onClick(
 					$author$project$Domain$LinkClicked(
-						$elm$browser$Browser$External(destinationUrl)))
+						$elm$browser$Browser$External(ep.ag)))
 				]),
 			_List_fromArray(
 				[
@@ -5568,8 +5588,8 @@ var $author$project$Main$gridSquare = F3(
 					$elm$html$Html$img,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$src(imgUrl),
-							$elm$html$Html$Attributes$alt(squareText)
+							$elm$html$Html$Attributes$src(ep.as),
+							$elm$html$Html$Attributes$alt(ep.aD)
 						]),
 					_List_Nil),
 					A2(
@@ -5580,11 +5600,44 @@ var $author$project$Main$gridSquare = F3(
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text(squareText)
+							$elm$html$Html$text(ep.aD)
 						]))
 				]));
-	});
-var $author$project$Main$projectGrid = function (_v0) {
+	} else {
+		var ip = proj.a;
+		return A2(
+			$elm$html$Html$div,
+			_List_fromArray(
+				[
+					$elm$html$Html$Attributes$class('square'),
+					$elm$html$Html$Events$onClick(
+					$author$project$Domain$LinkClicked(
+						$elm$browser$Browser$External('www.kaden.dev')))
+				]),
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$src('resources/headshot.jpg'),
+							$elm$html$Html$Attributes$alt(ip.aw)
+						]),
+					_List_Nil),
+					A2(
+					$elm$html$Html$p,
+					_List_fromArray(
+						[
+							$elm$html$Html$Attributes$class('title')
+						]),
+					_List_fromArray(
+						[
+							$elm$html$Html$text(ip.aw)
+						]))
+				]));
+	}
+};
+var $author$project$Main$projectGrid = function (ps) {
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
@@ -5614,14 +5667,7 @@ var $author$project$Main$projectGrid = function (_v0) {
 							[
 								$elm$html$Html$Attributes$class('grid')
 							]),
-						_List_fromArray(
-							[
-								A3($author$project$Main$gridSquare, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
-								A3($author$project$Main$gridSquare, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
-								A3($author$project$Main$gridSquare, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
-								A3($author$project$Main$gridSquare, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
-								A3($author$project$Main$gridSquare, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
-							]))
+						A2($elm$core$List$map, $author$project$Main$gridSquare, ps))
 					]))
 			]));
 };

@@ -13,7 +13,7 @@ type Msg
 type alias Model =
     { key : Nav.Key
     , url : Url.Url
-    , projects: List ProjectSquare
+    , projects: List Project
     }
 
 type alias InternalProject =
@@ -24,10 +24,10 @@ type alias InternalProject =
 type alias ExternalProject =
     {
         title: String,
-        url: String,
-        imgUrl: String
+        imgUrl: String,
+        url: String
     }
 
-type ProjectSquare
+type Project
     = Internal InternalProject
     | External ExternalProject

@@ -29,9 +29,14 @@ main =
 -- MODEL
 
 
-projects : List ProjectSquare
+projects : List Project
 projects =
-    []
+    [ External (ExternalProject "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor")
+    , External (ExternalProject "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo")
+    , External (ExternalProject "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo")
+    , External (ExternalProject "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html")
+    , External (ExternalProject "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker")
+    ]
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
@@ -226,9 +231,8 @@ about =
         ]
 
 
-projectGrid : List ProjectSquare -> Html Msg
-projectGrid _ =
-    -- TODO: generate the grid squares by mapping the projects in the model
+projectGrid : List Project -> Html Msg
+projectGrid ps =
     div
         [ class "centered-container"
         ]
@@ -236,36 +240,45 @@ projectGrid _ =
             [ text "Here's some stuff I'm doing:" ]
         , div [ class "centered-container" ]
             [ div
-                [ class "grid"
+                [ class "grid" ]
+                (List.map gridSquare ps)
+            ]
+        ]
+
+gridSquare : Project -> Html Msg
+gridSquare proj =
+    case proj of
+        External ep ->
+            div
+                [ class "square"
+                , onClick (LinkClicked (Browser.External ep.url))
                 ]
-                [ gridSquare "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor"
-                , gridSquare "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo"
-                , gridSquare "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
-                , gridSquare "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
-                , gridSquare "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
-
-                {- Add more squares here -}
+                [ img
+                    [ src ep.imgUrl
+                    , alt ep.title
+                    ]
+                    []
+                , p
+                    [ class "title"
+                    ]
+                    [ text ep.title ]
                 ]
-            ]
-        ]
 
-
-gridSquare : String -> String -> String -> Html Msg
-gridSquare squareText imgUrl destinationUrl =
-    div
-        [ class "square"
-        , onClick (LinkClicked (Browser.External destinationUrl))
-        ]
-        [ img
-            [ src imgUrl
-            , alt squareText
-            ]
-            []
-        , p
-            [ class "title"
-            ]
-            [ text squareText ]
-        ]
+        Internal ip ->
+            div
+                [ class "square"
+                , onClick (LinkClicked (Browser.External "www.kaden.dev"))
+                ]
+                [ img
+                    [ src "resources/headshot.jpg"
+                    , alt ip.name
+                    ]
+                    []
+                , p
+                    [ class "title"
+                    ]
+                    [ text ip.name ]
+                ]
 
 
 homePage : Model -> List (Html Msg)
