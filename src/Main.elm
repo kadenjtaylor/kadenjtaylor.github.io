@@ -6,6 +6,7 @@ import Domain exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onClick)
+import Projects.AbarthHatchbackSwitch
 import Url
 
 
@@ -36,6 +37,8 @@ projects =
     , External (ExternalProject "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo")
     , External (ExternalProject "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html")
     , External (ExternalProject "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker")
+
+    -- , Projects.AbarthHatchbackSwitch.root
     ]
 
 
@@ -271,17 +274,35 @@ gridSquare proj =
         Internal ip ->
             div
                 [ class "square"
-                , onClick (LinkClicked (Browser.External "www.kaden.dev"))
+
+                -- , onClick
+                --     (String.split " " ip.title
+                --         |> List.map String.toLower
+                --         |> String.concat
+                --         |> Url.fromString
+                --         |> Maybe.withDefault
+                --             (Url.Url
+                --                 Url.Https
+                --                 "www.kaden.dev"
+                --                 Maybe.Nothing
+                --                 "/"
+                --                 Maybe.Nothing
+                --                 (Maybe.Just "internal-page-not-found")
+                --             )
+                --         |> Maybe.
+                --         |> Browser.Internal
+                --         |> LinkClicked
+                --     )
                 ]
                 [ img
-                    [ src "resources/headshot.jpg"
-                    , alt ip.name
+                    [ src ""
+                    , alt ip.title
                     ]
                     []
                 , p
                     [ class "title"
                     ]
-                    [ text ip.name ]
+                    [ text ip.title ]
                 ]
 
 

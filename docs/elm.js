@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.au,
+		impl.av,
 		impl.aE,
-		impl.aC,
+		impl.aD,
 		function() { return function() {} }
 	);
 });
@@ -3943,9 +3943,9 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.au,
+		impl.av,
 		impl.aE,
-		impl.aC,
+		impl.aD,
 		function(sendToApp, initialModel) {
 			var view = impl.aF;
 			/**/
@@ -3979,9 +3979,9 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.au,
+		impl.av,
 		impl.aE,
-		impl.aC,
+		impl.aD,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.I && impl.I(sendToApp)
 			var view = impl.aF;
@@ -3997,7 +3997,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.aD) && (_VirtualDom_doc.title = title = doc.aD);
+				(title !== doc.ag) && (_VirtualDom_doc.title = title = doc.ag);
 			});
 		}
 	);
@@ -4053,8 +4053,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.ax;
-	var onUrlRequest = impl.ay;
+	var onUrlChange = impl.ay;
+	var onUrlRequest = impl.az;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		au: function(flags)
+		av: function(flags)
 		{
-			return A3(impl.au, flags, _Browser_getUrl(), key);
+			return A3(impl.av, flags, _Browser_getUrl(), key);
 		},
 		aF: impl.aF,
 		aE: impl.aE,
-		aC: impl.aC
+		aD: impl.aD
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { ar: 'hidden', an: 'visibilitychange' }
+		? { as: 'hidden', ao: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { ar: 'mozHidden', an: 'mozvisibilitychange' }
+		? { as: 'mozHidden', ao: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { ar: 'msHidden', an: 'msvisibilitychange' }
+		? { as: 'msHidden', ao: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { ar: 'webkitHidden', an: 'webkitvisibilitychange' }
-		: { ar: 'hidden', an: 'visibilitychange' };
+		? { as: 'webkitHidden', ao: 'webkitvisibilitychange' }
+		: { as: 'hidden', ao: 'visibilitychange' };
 }
 
 
@@ -4248,10 +4248,10 @@ function _Browser_getViewport()
 {
 	return {
 		ad: _Browser_getScene(),
-		ah: {
-			aj: _Browser_window.pageXOffset,
-			ak: _Browser_window.pageYOffset,
-			ai: _Browser_doc.documentElement.clientWidth,
+		ai: {
+			ak: _Browser_window.pageXOffset,
+			al: _Browser_window.pageYOffset,
+			aj: _Browser_doc.documentElement.clientWidth,
 			R: _Browser_doc.documentElement.clientHeight
 		}
 	};
@@ -4262,7 +4262,7 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ai: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		aj: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
 		R: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
@@ -4287,13 +4287,13 @@ function _Browser_getViewportOf(id)
 	{
 		return {
 			ad: {
-				ai: node.scrollWidth,
+				aj: node.scrollWidth,
 				R: node.scrollHeight
 			},
-			ah: {
-				aj: node.scrollLeft,
-				ak: node.scrollTop,
-				ai: node.clientWidth,
+			ai: {
+				ak: node.scrollLeft,
+				al: node.scrollTop,
+				aj: node.clientWidth,
 				R: node.clientHeight
 			}
 		};
@@ -4325,16 +4325,16 @@ function _Browser_getElement(id)
 		var y = _Browser_window.pageYOffset;
 		return {
 			ad: _Browser_getScene(),
-			ah: {
-				aj: x,
-				ak: y,
-				ai: _Browser_doc.documentElement.clientWidth,
+			ai: {
+				ak: x,
+				al: y,
+				aj: _Browser_doc.documentElement.clientWidth,
 				R: _Browser_doc.documentElement.clientHeight
 			},
-			ap: {
-				aj: x + rect.left,
-				ak: y + rect.top,
-				ai: rect.width,
+			aq: {
+				ak: x + rect.left,
+				al: y + rect.top,
+				aj: rect.width,
 				R: rect.height
 			}
 		};
@@ -5161,7 +5161,7 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Domain$Model = F3(
 	function (key, url, projects) {
-		return {av: key, aA: projects, ag: url};
+		return {aw: key, aB: projects, ah: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
@@ -5170,7 +5170,7 @@ var $author$project$Domain$External = function (a) {
 };
 var $author$project$Domain$ExternalProject = F3(
 	function (title, imgUrl, url) {
-		return {as: imgUrl, aD: title, ag: url};
+		return {at: imgUrl, ag: title, ah: url};
 	});
 var $author$project$Main$projects = _List_fromArray(
 	[
@@ -5255,7 +5255,7 @@ var $author$project$Main$update = F2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.av,
+						model.aw,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5268,7 +5268,7 @@ var $author$project$Main$update = F2(
 			return _Utils_Tuple2(
 				_Utils_update(
 					model,
-					{ag: url}),
+					{ah: url}),
 				$elm$core$Platform$Cmd$none);
 		}
 	});
@@ -5580,7 +5580,7 @@ var $author$project$Main$gridSquare = function (proj) {
 					$elm$html$Html$Attributes$class('square'),
 					$elm$html$Html$Events$onClick(
 					$author$project$Domain$LinkClicked(
-						$elm$browser$Browser$External(ep.ag)))
+						$elm$browser$Browser$External(ep.ah)))
 				]),
 			_List_fromArray(
 				[
@@ -5588,8 +5588,8 @@ var $author$project$Main$gridSquare = function (proj) {
 					$elm$html$Html$img,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$src(ep.as),
-							$elm$html$Html$Attributes$alt(ep.aD)
+							$elm$html$Html$Attributes$src(ep.at),
+							$elm$html$Html$Attributes$alt(ep.ag)
 						]),
 					_List_Nil),
 					A2(
@@ -5600,7 +5600,7 @@ var $author$project$Main$gridSquare = function (proj) {
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text(ep.aD)
+							$elm$html$Html$text(ep.ag)
 						]))
 				]));
 	} else {
@@ -5609,10 +5609,7 @@ var $author$project$Main$gridSquare = function (proj) {
 			$elm$html$Html$div,
 			_List_fromArray(
 				[
-					$elm$html$Html$Attributes$class('square'),
-					$elm$html$Html$Events$onClick(
-					$author$project$Domain$LinkClicked(
-						$elm$browser$Browser$External('www.kaden.dev')))
+					$elm$html$Html$Attributes$class('square')
 				]),
 			_List_fromArray(
 				[
@@ -5620,8 +5617,8 @@ var $author$project$Main$gridSquare = function (proj) {
 					$elm$html$Html$img,
 					_List_fromArray(
 						[
-							$elm$html$Html$Attributes$src('resources/headshot.jpg'),
-							$elm$html$Html$Attributes$alt(ip.aw)
+							$elm$html$Html$Attributes$src(''),
+							$elm$html$Html$Attributes$alt(ip.ag)
 						]),
 					_List_Nil),
 					A2(
@@ -5632,7 +5629,7 @@ var $author$project$Main$gridSquare = function (proj) {
 						]),
 					_List_fromArray(
 						[
-							$elm$html$Html$text(ip.aw)
+							$elm$html$Html$text(ip.ag)
 						]))
 				]));
 	}
@@ -5676,7 +5673,7 @@ var $author$project$Main$homePage = function (model) {
 		[
 			$author$project$Main$header,
 			$author$project$Main$about,
-			$author$project$Main$projectGrid(model.aA)
+			$author$project$Main$projectGrid(model.aB)
 		]);
 };
 var $elm$html$Html$br = _VirtualDom_node('br');
@@ -5696,7 +5693,7 @@ var $author$project$Main$notFoundPage = function (model) {
 					_List_fromArray(
 						[
 							$elm$html$Html$text(
-							$elm$url$Url$toString(model.ag))
+							$elm$url$Url$toString(model.ah))
 						])),
 					A2(
 					$elm$html$Html$p,
@@ -5724,7 +5721,7 @@ var $author$project$Main$testLink = function (model) {
 				_List_fromArray(
 					[
 						$elm$html$Html$text(
-						$elm$url$Url$toString(model.ag))
+						$elm$url$Url$toString(model.ah))
 					])),
 				A2(
 				$elm$html$Html$p,
@@ -5804,12 +5801,12 @@ var $author$project$Main$testLink = function (model) {
 			]));
 };
 var $author$project$Main$view = function (model) {
-	var _v0 = model.ag.V;
+	var _v0 = model.ah.V;
 	switch (_v0) {
 		case '/':
 			return {
 				E: $author$project$Main$homePage(model),
-				aD: 'Kaden.DEV'
+				ag: 'Kaden.DEV'
 			};
 		case '/stable-test-link':
 			return {
@@ -5817,16 +5814,16 @@ var $author$project$Main$view = function (model) {
 					[
 						$author$project$Main$testLink(model)
 					]),
-				aD: 'Stable Test Link'
+				ag: 'Stable Test Link'
 			};
 		default:
 			return {
 				E: $author$project$Main$notFoundPage(model),
-				aD: 'NOT FOUND'
+				ag: 'NOT FOUND'
 			};
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
-	{au: $author$project$Main$init, ax: $author$project$Domain$UrlChanged, ay: $author$project$Domain$LinkClicked, aC: $author$project$Main$subscriptions, aE: $author$project$Main$update, aF: $author$project$Main$view});
+	{av: $author$project$Main$init, ay: $author$project$Domain$UrlChanged, az: $author$project$Domain$LinkClicked, aD: $author$project$Main$subscriptions, aE: $author$project$Main$update, aF: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));
