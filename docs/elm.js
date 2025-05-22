@@ -5695,15 +5695,15 @@ var $author$project$Main$notFoundPage = function (model) {
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text(
-							$elm$url$Url$toString(model.ah))
+							$elm$html$Html$text('404 Page Not Found')
 						])),
 					A2(
 					$elm$html$Html$p,
 					_List_Nil,
 					_List_fromArray(
 						[
-							$elm$html$Html$text('404 Page Not Found')
+							$elm$html$Html$text(
+							$elm$url$Url$toString(model.ah))
 						]))
 				]))
 		]);
