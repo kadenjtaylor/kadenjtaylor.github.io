@@ -5518,8 +5518,8 @@ var $author$project$Main$header = A2(
 											$elm$html$Html$Attributes$class('rcorners'),
 											$elm$html$Html$Attributes$src('resources/headshot.jpg'),
 											$elm$html$Html$Attributes$alt('Kaden\'s Face'),
-											A2($elm$html$Html$Attributes$style, 'width', '175px'),
-											A2($elm$html$Html$Attributes$style, 'height', '175px'),
+											A2($elm$html$Html$Attributes$style, 'width', '200px'),
+											A2($elm$html$Html$Attributes$style, 'height', '200px'),
 											$elm$html$Html$Attributes$title('Kaden\'s Face')
 										]),
 									_List_Nil)
@@ -5657,7 +5657,7 @@ var $author$project$Main$projectGrid = function (ps) {
 				$elm$html$Html$div,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$class('centered-container')
+						A2($elm$html$Html$Attributes$style, 'width', '85%')
 					]),
 				_List_fromArray(
 					[

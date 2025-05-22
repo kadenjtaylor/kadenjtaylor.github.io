@@ -158,8 +158,8 @@ header =
                         [ class "rcorners"
                         , src "resources/headshot.jpg"
                         , alt "Kaden's Face"
-                        , style "width" "175px"
-                        , style "height" "175px"
+                        , style "width" "200px"
+                        , style "height" "200px"
                         , title "Kaden's Face"
                         ]
                         []
@@ -238,12 +238,16 @@ projectGrid ps =
         ]
         [ h2 []
             [ text "Here's some stuff I'm doing:" ]
-        , div [ class "centered-container" ]
+        , div
+            [ style "width" "85%"
+            ]
             [ div
-                [ class "grid" ]
+                [ class "grid"
+                ]
                 (List.map gridSquare ps)
             ]
         ]
+
 
 gridSquare : Project -> Html Msg
 gridSquare proj =
