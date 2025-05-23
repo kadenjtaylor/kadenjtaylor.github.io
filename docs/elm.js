@@ -5764,16 +5764,19 @@ var $author$project$Main$view = function (model) {
 		return {E: w.ap, ah: w.ah};
 	} else {
 		var _v1 = model.M.H;
-		if (_v1 === '/') {
-			return {
-				E: $author$project$Main$homePage(model),
-				ah: 'Kaden.DEV'
-			};
-		} else {
-			return {
-				E: $author$project$Main$notFoundPage(model),
-				ah: 'NOT FOUND'
-			};
+		switch (_v1) {
+			case '/':
+				return {
+					E: $author$project$Main$homePage(model),
+					ah: 'Kaden.DEV'
+				};
+			case '/abarth-hatchback-switch':
+				return {E: $author$project$Projects$AbarthHatchbackSwitch$project.ap, ah: 'Abarth Hatchback Switch'};
+			default:
+				return {
+					E: $author$project$Main$notFoundPage(model),
+					ah: 'NOT FOUND'
+				};
 		}
 	}
 };

@@ -112,6 +112,11 @@ view model =
                     , body = homePage model
                     }
 
+                "/abarth-hatchback-switch" ->
+                    { title = "Abarth Hatchback Switch"
+                    , body = Projects.AbarthHatchbackSwitch.project.content
+                    }
+
                 _ ->
                     { title = "NOT FOUND"
                     , body = notFoundPage model
