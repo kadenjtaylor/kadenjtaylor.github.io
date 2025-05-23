@@ -2,11 +2,9 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
-import Debug exposing (toString)
 import Domain exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
-import Html.Events exposing (onClick)
 import Projects.AbarthHatchbackSwitch
 import Url
 
@@ -195,6 +193,7 @@ blurbStyles =
     , style "border" "1px solid #333"
     , style "border-radius" "20px"
     , style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"
+    , style "background-color" "#e6e6e6"
     ]
 
 
@@ -251,17 +250,17 @@ gridSquareExternal : ExternalProject -> Html Msg
 gridSquareExternal proj =
     div
         [ class "square"
-        , onClick (LinkClicked (Browser.External proj.url))
         ]
-        [ img
-            [ src proj.imgUrl
-            , alt proj.title
+        [ a [ style "width" "100%", style "height" "100%", style "padding" "10px", href proj.url ]
+            [ img
+                [ src proj.imgUrl
+                , alt proj.title
+                ]
+                []
+            , p
+                [ class "title" ]
+                [ text proj.title ]
             ]
-            []
-        , p
-            [ class "title"
-            ]
-            [ text proj.title ]
         ]
 
 
@@ -270,19 +269,16 @@ gridSquareWriteup w =
     div
         [ class "square"
         ]
-        -- TODO: This does the right thing, but only the image is clickable...
-        -- Make the <a> take up the whole div and have the other stuff under? it
-        [ a [ href w.url ]
+        [ a [ style "width" "100%", style "height" "100%", style "padding" "10px", style "text-decoration" "none", style "text-decoration" "none", href w.url ]
             [ img
                 [ src w.imgUrl
                 , alt w.title
                 ]
                 []
+            , p
+                [ class "title" ]
+                [ text w.title ]
             ]
-        , p
-            [ class "title"
-            ]
-            [ text w.title ]
         ]
 
 

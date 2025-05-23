@@ -5332,7 +5332,8 @@ var $author$project$Main$blurbStyles = _List_fromArray(
 		A2($elm$html$Html$Attributes$style, 'margin', '30px'),
 		A2($elm$html$Html$Attributes$style, 'border', '1px solid #333'),
 		A2($elm$html$Html$Attributes$style, 'border-radius', '20px'),
-		A2($elm$html$Html$Attributes$style, 'box-shadow', '2px 4px 5px rgba(0, 0, 0, 0.5)')
+		A2($elm$html$Html$Attributes$style, 'box-shadow', '2px 4px 5px rgba(0, 0, 0, 0.5)'),
+		A2($elm$html$Html$Attributes$style, 'background-color', '#e6e6e6')
 	]);
 var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
@@ -5592,53 +5593,45 @@ var $author$project$Main$header = A2(
 						]))
 				]))
 		]));
-var $elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
-var $elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var $elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			$elm$virtual_dom$VirtualDom$on,
-			event,
-			$elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var $elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		$elm$html$Html$Events$on,
-		'click',
-		$elm$json$Json$Decode$succeed(msg));
-};
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $author$project$Main$gridSquareExternal = function (proj) {
 	return A2(
 		$elm$html$Html$div,
 		_List_fromArray(
 			[
-				$elm$html$Html$Attributes$class('square'),
-				$elm$html$Html$Events$onClick(
-				$author$project$Domain$LinkClicked(
-					$elm$browser$Browser$External(proj.url)))
+				$elm$html$Html$Attributes$class('square')
 			]),
 		_List_fromArray(
 			[
 				A2(
-				$elm$html$Html$img,
+				$elm$html$Html$a,
 				_List_fromArray(
 					[
-						$elm$html$Html$Attributes$src(proj.imgUrl),
-						$elm$html$Html$Attributes$alt(proj.title)
-					]),
-				_List_Nil),
-				A2(
-				$elm$html$Html$p,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('title')
+						A2($elm$html$Html$Attributes$style, 'width', '100%'),
+						A2($elm$html$Html$Attributes$style, 'height', '100%'),
+						A2($elm$html$Html$Attributes$style, 'padding', '10px'),
+						$elm$html$Html$Attributes$href(proj.url)
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text(proj.title)
+						A2(
+						$elm$html$Html$img,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$src(proj.imgUrl),
+								$elm$html$Html$Attributes$alt(proj.title)
+							]),
+						_List_Nil),
+						A2(
+						$elm$html$Html$p,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('title')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(proj.title)
+							]))
 					]))
 			]));
 };
@@ -5655,6 +5648,11 @@ var $author$project$Main$gridSquareWriteup = function (w) {
 				$elm$html$Html$a,
 				_List_fromArray(
 					[
+						A2($elm$html$Html$Attributes$style, 'width', '100%'),
+						A2($elm$html$Html$Attributes$style, 'height', '100%'),
+						A2($elm$html$Html$Attributes$style, 'padding', '10px'),
+						A2($elm$html$Html$Attributes$style, 'text-decoration', 'none'),
+						A2($elm$html$Html$Attributes$style, 'text-decoration', 'none'),
 						$elm$html$Html$Attributes$href(w.url)
 					]),
 				_List_fromArray(
@@ -5666,17 +5664,17 @@ var $author$project$Main$gridSquareWriteup = function (w) {
 								$elm$html$Html$Attributes$src(w.imgUrl),
 								$elm$html$Html$Attributes$alt(w.title)
 							]),
-						_List_Nil)
-					])),
-				A2(
-				$elm$html$Html$p,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('title')
-					]),
-				_List_fromArray(
-					[
-						$elm$html$Html$text(w.title)
+						_List_Nil),
+						A2(
+						$elm$html$Html$p,
+						_List_fromArray(
+							[
+								$elm$html$Html$Attributes$class('title')
+							]),
+						_List_fromArray(
+							[
+								$elm$html$Html$text(w.title)
+							]))
 					]))
 			]));
 };
