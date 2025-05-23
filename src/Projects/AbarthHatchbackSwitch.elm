@@ -1,8 +1,10 @@
 module Projects.AbarthHatchbackSwitch exposing (..)
 
-import Domain exposing (InternalProject, Project(..))
+import Domain exposing (Writeup)
+import Html exposing (..)
+import Html.Attributes exposing (class)
 
 
-root : Project
-root =
-    Internal (InternalProject "Abarth Hatchback Switch")
+project : Writeup
+project =
+    Writeup "Abarth Hatchback Switch" "abarth-hatchback-switch" [ div [ class "centered-container" ] [ text "It works!" ] ]

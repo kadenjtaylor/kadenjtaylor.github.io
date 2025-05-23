@@ -1,7 +1,8 @@
 module Domain exposing (..)
 
-import Browser
+import Browser exposing (UrlRequest(..))
 import Browser.Navigation as Nav
+import Html exposing (Html)
 import Url
 
 
@@ -13,12 +14,20 @@ type Msg
 type alias Model =
     { key : Nav.Key
     , url : Url.Url
-    , projects : List Project
+    , projects : ProjectDirectory
     }
 
 
-type alias InternalProject =
+type alias ProjectDirectory =
+    { external : List ExternalProject
+    , writeups : List Writeup
+    }
+
+
+type alias Writeup =
     { title : String
+    , url : String
+    , content : List (Html Msg)
     }
 
 
@@ -27,8 +36,3 @@ type alias ExternalProject =
     , imgUrl : String
     , url : String
     }
-
-
-type Project
-    = Internal InternalProject
-    | External ExternalProject

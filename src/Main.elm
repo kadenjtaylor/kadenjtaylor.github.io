@@ -2,6 +2,7 @@ module Main exposing (..)
 
 import Browser
 import Browser.Navigation as Nav
+import Debug exposing (toString)
 import Domain exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
@@ -30,16 +31,17 @@ main =
 -- MODEL
 
 
-projects : List Project
+projects : ProjectDirectory
 projects =
-    [ External (ExternalProject "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor")
-    , External (ExternalProject "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo")
-    , External (ExternalProject "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo")
-    , External (ExternalProject "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html")
-    , External (ExternalProject "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker")
-
-    -- , Projects.AbarthHatchbackSwitch.root
-    ]
+    { external =
+        [ ExternalProject "Playing Chess" "https://lichess1.org/assets/______3/flair/img/activity.lichess.webp" "https://lichess.org/@/kadenjtaylor"
+        , ExternalProject "Visualizing Symbolic Manipulation" "resources/arithmetic_tree.png" "pages/arithmetic_demo"
+        , ExternalProject "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
+        , ExternalProject "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
+        , ExternalProject "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
+        ]
+    , writeups = [ Projects.AbarthHatchbackSwitch.project ]
+    }
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
@@ -89,18 +91,31 @@ subscriptions _ =
 -- VIEW
 
 
+writeupLookup : List Writeup -> String -> Maybe Writeup
+writeupLookup ps path =
+    List.filter (\p -> p.url == path) ps
+        |> List.head
+
+
 view : Model -> Browser.Document Msg
 view model =
-    case model.url.path of
-        "/" ->
-            { title = "Kaden.DEV"
-            , body = homePage model
+    case writeupLookup model.projects.writeups model.url.path of
+        Just w ->
+            { title = w.title
+            , body = w.content
             }
 
-        _ ->
-            { title = "NOT FOUND"
-            , body = notFoundPage model
-            }
+        Nothing ->
+            case model.url.path of
+                "/" ->
+                    { title = "Kaden.DEV"
+                    , body = homePage model
+                    }
+
+                _ ->
+                    { title = "NOT FOUND"
+                    , body = notFoundPage model
+                    }
 
 
 linkBar : Html Msg
@@ -202,8 +217,15 @@ about =
         ]
 
 
-projectGrid : List Project -> Html Msg
+projectGrid : ProjectDirectory -> Html Msg
 projectGrid ps =
+    let
+        externalSquares =
+            List.map gridSquareExternal ps.external
+
+        writeupSquares =
+            List.map gridSquareWriteup ps.writeups
+    in
     div
         [ class "centered-container"
         ]
@@ -213,65 +235,48 @@ projectGrid ps =
             [ style "width" "85%"
             ]
             [ div
-                [ class "grid"
-                ]
-                (List.map gridSquare ps)
+                [ class "grid" ]
+                (externalSquares ++ writeupSquares)
             ]
         ]
 
 
-gridSquare : Project -> Html Msg
-gridSquare proj =
-    case proj of
-        External ep ->
-            div
-                [ class "square"
-                , onClick (LinkClicked (Browser.External ep.url))
-                ]
-                [ img
-                    [ src ep.imgUrl
-                    , alt ep.title
-                    ]
-                    []
-                , p
-                    [ class "title"
-                    ]
-                    [ text ep.title ]
-                ]
+gridSquareExternal : ExternalProject -> Html Msg
+gridSquareExternal proj =
+    div
+        [ class "square"
+        , onClick (LinkClicked (Browser.External proj.url))
+        ]
+        [ img
+            [ src proj.imgUrl
+            , alt proj.title
+            ]
+            []
+        , p
+            [ class "title"
+            ]
+            [ text proj.title ]
+        ]
 
-        Internal ip ->
-            div
-                [ class "square"
 
-                -- , onClick
-                --     (String.split " " ip.title
-                --         |> List.map String.toLower
-                --         |> String.concat
-                --         |> Url.fromString
-                --         |> Maybe.withDefault
-                --             (Url.Url
-                --                 Url.Https
-                --                 "www.kaden.dev"
-                --                 Maybe.Nothing
-                --                 "/"
-                --                 Maybe.Nothing
-                --                 (Maybe.Just "internal-page-not-found")
-                --             )
-                --         |> Maybe.
-                --         |> Browser.Internal
-                --         |> LinkClicked
-                --     )
-                ]
-                [ img
-                    [ src ""
-                    , alt ip.title
-                    ]
-                    []
-                , p
-                    [ class "title"
-                    ]
-                    [ text ip.title ]
-                ]
+gridSquareWriteup : Writeup -> Html Msg
+gridSquareWriteup w =
+    div
+        [ class "square"
+
+        -- TODO: Make this an internal link - otherwise we have to bounce off the 404 first...
+        , onClick (LinkClicked (Browser.External w.url))
+        ]
+        [ img
+            [ src ""
+            , alt w.title
+            ]
+            []
+        , p
+            [ class "title"
+            ]
+            [ text w.title ]
+        ]
 
 
 homePage : Model -> List (Html Msg)
