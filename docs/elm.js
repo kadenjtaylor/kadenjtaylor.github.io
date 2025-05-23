@@ -5189,8 +5189,11 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 	});
 var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$h1 = _VirtualDom_node('h1');
+var $elm$html$Html$span = _VirtualDom_node('span');
 var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Projects$AbarthHatchbackSwitch$title = 'Making a New Abarth Hatchback Switch';
 var $author$project$Projects$AbarthHatchbackSwitch$content = _List_fromArray(
 	[
 		A2(
@@ -5201,10 +5204,25 @@ var $author$project$Projects$AbarthHatchbackSwitch$content = _List_fromArray(
 			]),
 		_List_fromArray(
 			[
-				$elm$html$Html$text('Coming soon!')
+				A2(
+				$elm$html$Html$h1,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text($author$project$Projects$AbarthHatchbackSwitch$title)
+					])),
+				A2(
+				$elm$html$Html$span,
+				_List_Nil,
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Coming Soon!')
+					]))
 			]))
 	]);
-var $author$project$Projects$AbarthHatchbackSwitch$project = A4($author$project$Domain$Writeup, 'Abarth Hatchback Switch', '/abarth-hatchback-switch', 'resources/logo_abarth.jpg', $author$project$Projects$AbarthHatchbackSwitch$content);
+var $author$project$Projects$AbarthHatchbackSwitch$imageUrl = 'resources/logo_abarth.jpg';
+var $author$project$Projects$AbarthHatchbackSwitch$linkUrl = '/abarth-hatchback-switch';
+var $author$project$Projects$AbarthHatchbackSwitch$project = A4($author$project$Domain$Writeup, $author$project$Projects$AbarthHatchbackSwitch$title, $author$project$Projects$AbarthHatchbackSwitch$linkUrl, $author$project$Projects$AbarthHatchbackSwitch$imageUrl, $author$project$Projects$AbarthHatchbackSwitch$content);
 var $author$project$Main$projects = {
 	external: _List_fromArray(
 		[
@@ -5339,7 +5357,6 @@ var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way 
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
 var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\nRight now I\'m looking for work that lets me feel really useful - shoot me an email if you think I\nmight be a good fit for a project you know about!\n';
-var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$about = A2(
 	$elm$html$Html$div,
 	_List_fromArray(
@@ -5408,7 +5425,6 @@ var $author$project$Main$about = A2(
 				]))
 		]));
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
-var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$Attributes$id = $elm$html$Html$Attributes$stringProperty('id');
 var $elm$html$Html$img = _VirtualDom_node('img');
 var $elm$html$Html$a = _VirtualDom_node('a');
