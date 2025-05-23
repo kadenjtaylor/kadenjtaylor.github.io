@@ -27,6 +27,7 @@ type alias ProjectDirectory =
 type alias Writeup =
     { title : String
     , url : String
+    , imgUrl : String
     , content : List (Html Msg)
     }
 

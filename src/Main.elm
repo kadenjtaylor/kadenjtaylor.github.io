@@ -66,7 +66,6 @@ update msg model =
                         ( model, Nav.load (Url.toString url) )
 
                     else
-                        -- In THIS case, we can do whatever we want in elm
                         ( model, Nav.pushUrl model.key (Url.toString url) )
 
                 Browser.External href ->
@@ -89,17 +88,24 @@ subscriptions _ =
 
 
 -- VIEW
-
-
-writeupLookup : List Writeup -> String -> Maybe Writeup
-writeupLookup ps path =
-    List.filter (\p -> p.url == path) ps
-        |> List.head
+-- writeupLookup : List Writeup -> String -> Maybe Writeup
+-- writeupLookup ps path =
+--     let thingToCompare = path
+--     List.filter (\p -> p.url.path == String.concat [ "/", path ]) ps
+--         |> List.head
 
 
 view : Model -> Browser.Document Msg
 view model =
-    case writeupLookup model.projects.writeups model.url.path of
+    let
+        targetWriteup =
+            List.head
+                (List.filter
+                    (\w -> w.url == model.url.path)
+                    model.projects.writeups
+                )
+    in
+    case targetWriteup of
         Just w ->
             { title = w.title
             , body = w.content
@@ -110,11 +116,6 @@ view model =
                 "/" ->
                     { title = "Kaden.DEV"
                     , body = homePage model
-                    }
-
-                "/abarth-hatchback-switch" ->
-                    { title = "Abarth Hatchback Switch"
-                    , body = Projects.AbarthHatchbackSwitch.project.content
                     }
 
                 _ ->
@@ -268,15 +269,16 @@ gridSquareWriteup : Writeup -> Html Msg
 gridSquareWriteup w =
     div
         [ class "square"
-
-        -- TODO: Make this an internal link - otherwise we have to bounce off the 404 first...
-        , onClick (LinkClicked (Browser.External w.url))
         ]
-        [ img
-            [ src ""
-            , alt w.title
+        -- TODO: This does the right thing, but only the image is clickable...
+        -- Make the <a> take up the whole div and have the other stuff under? it
+        [ a [ href w.url ]
+            [ img
+                [ src w.imgUrl
+                , alt w.title
+                ]
+                []
             ]
-            []
         , p
             [ class "title"
             ]
