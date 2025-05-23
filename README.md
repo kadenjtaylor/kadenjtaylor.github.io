@@ -12,7 +12,6 @@ git push
 ```
 
 ## TODOs
-- fix writeup grid squares so the're clickable all over 
 - wrangle css into a single place
 - separating projects from musings
 - tagging projects and musings so they're findable without the whole list
