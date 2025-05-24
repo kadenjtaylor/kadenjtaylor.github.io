@@ -3,6 +3,7 @@ module View exposing (..)
 import Domain exposing (Msg)
 import Html exposing (..)
 import Html.Attributes exposing (..)
+import Styles exposing (centeredBlock)
 
 
 type alias LinkCard =
@@ -15,9 +16,7 @@ type alias LinkCard =
 linkGrid : List LinkCard -> Html Msg
 linkGrid cards =
     div
-        [style "width" "85%"
-        , style "margin" "auto"
-        ]
+        (centeredBlock "85%")
         [ div
             [ class "grid" ]
             (List.map

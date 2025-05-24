@@ -40,22 +40,19 @@ cadImageUrl =
 
 topStyle : List (Attribute Msg)
 topStyle =
-    [ style "background-color" "purple"
-    , style "display" "flex"
+    [ style "display" "flex"
     ]
 
 
 leftStyle : List (Attribute Msg)
 leftStyle =
-    [ style "background-color" "lightblue"
-    , style "padding" "25px"
+    [ style "padding" "25px"
     ]
 
 
 rightStyle : List (Attribute Msg)
 rightStyle =
-    [ style "background-color" "salmon"
-    , style "padding" "25px"
+    [ style "padding" "25px"
     ]
 
 
@@ -65,7 +62,9 @@ problemStatement =
 There's this little rubber/metal piece that fell out of my car's
 trunk switch. That little piece falling out meant that the only way
 to open the trunk was to bridge the connection between those two metal
-bits with another metal bit.
+bits with another metal bit. Not only was that super annoying, but
+every once in a while someone would think I was breaking into my own
+car.
 """
 
 
@@ -123,7 +122,7 @@ resources =
 
 content : List (Html Msg)
 content =
-    [ div (centeredBlock "55%")
+    [ div (List.append [ style "max-width" "1000px" ] (centeredBlock "55%"))
         [ h1 [ style "text-align" "center", style "margin-top" "5%" ] [ text title ]
         , h2 [ style "text-align" "center" ] [ text "I Have A Problem" ]
         , problem

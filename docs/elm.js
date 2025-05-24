@@ -5173,6 +5173,14 @@ var $author$project$Domain$Writeup = F4(
 	function (title, url, imgUrl, content) {
 		return {at: content, W: imgUrl, ak: title, M: url};
 	});
+var $elm$core$List$append = F2(
+	function (xs, ys) {
+		if (!ys.b) {
+			return xs;
+		} else {
+			return A3($elm$core$List$foldr, $elm$core$List$cons, ys, xs);
+		}
+	});
 var $author$project$Projects$AbarthHatchbackSwitch$backgroundInfo = '\nWe could potentially buy a new one... but can we fix the old one?\n';
 var $elm$html$Html$div = _VirtualDom_node('div');
 var $elm$html$Html$img = _VirtualDom_node('img');
@@ -5180,13 +5188,11 @@ var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
 var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
 var $author$project$Projects$AbarthHatchbackSwitch$leftStyle = _List_fromArray(
 	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'lightblue'),
 		A2($elm$html$Html$Attributes$style, 'padding', '25px')
 	]);
 var $elm$html$Html$p = _VirtualDom_node('p');
 var $author$project$Projects$AbarthHatchbackSwitch$rightStyle = _List_fromArray(
 	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'salmon'),
 		A2($elm$html$Html$Attributes$style, 'padding', '25px')
 	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
@@ -5207,7 +5213,6 @@ var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$Projects$AbarthHatchbackSwitch$topStyle = _List_fromArray(
 	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'purple'),
 		A2($elm$html$Html$Attributes$style, 'display', 'flex')
 	]);
 var $author$project$Projects$AbarthHatchbackSwitch$background = A2(
@@ -5246,13 +5251,13 @@ var $author$project$Projects$AbarthHatchbackSwitch$background = A2(
 var $author$project$Styles$centeredBlock = function (width) {
 	return _List_fromArray(
 		[
-			A2($elm$html$Html$Attributes$style, 'max-width', width),
+			A2($elm$html$Html$Attributes$style, 'width', width),
 			A2($elm$html$Html$Attributes$style, 'margin', 'auto')
 		]);
 };
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
-var $author$project$Projects$AbarthHatchbackSwitch$problemStatement = '\nThere\'s this little rubber/metal piece that fell out of my car\'s\ntrunk switch. That little piece falling out meant that the only way\nto open the trunk was to bridge the connection between those two metal\nbits with another metal bit.\n';
+var $author$project$Projects$AbarthHatchbackSwitch$problemStatement = '\nThere\'s this little rubber/metal piece that fell out of my car\'s\ntrunk switch. That little piece falling out meant that the only way\nto open the trunk was to bridge the connection between those two metal\nbits with another metal bit. Not only was that super annoying, but\nevery once in a while someone would think I was breaking into my own\ncar.\n';
 var $author$project$Projects$AbarthHatchbackSwitch$problem = A2(
 	$elm$html$Html$div,
 	$author$project$Projects$AbarthHatchbackSwitch$topStyle,
@@ -5345,11 +5350,7 @@ var $author$project$View$gridSquare = F3(
 var $author$project$View$linkGrid = function (cards) {
 	return A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				A2($elm$html$Html$Attributes$style, 'width', '85%'),
-				A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-			]),
+		$author$project$Styles$centeredBlock('85%'),
 		_List_fromArray(
 			[
 				A2(
@@ -5471,7 +5472,13 @@ var $author$project$Projects$AbarthHatchbackSwitch$content = _List_fromArray(
 	[
 		A2(
 		$elm$html$Html$div,
-		$author$project$Styles$centeredBlock('55%'),
+		A2(
+			$elm$core$List$append,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'max-width', '1000px')
+				]),
+			$author$project$Styles$centeredBlock('55%')),
 		_List_fromArray(
 			[
 				A2(
