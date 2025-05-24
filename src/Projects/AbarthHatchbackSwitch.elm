@@ -126,7 +126,7 @@ content =
         [ h1 [ style "text-align" "center", style "margin-top" "5%" ] [ text title ]
         , h2 [ style "text-align" "center" ] [ text "I Have A Problem" ]
         , problem
-        , h2 [ style "text-align" "center" ] [ text "A Bit of Background" ]
+        , h2 [ style "text-align" "center" ] [ text "The Complication" ]
         , background
         , h2 [ style "text-align" "center" ] [ text "Solution" ]
         , solution

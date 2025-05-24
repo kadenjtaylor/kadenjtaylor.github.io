@@ -163,8 +163,7 @@ I'm on the more extroverted side for a software developer, and I LOVE getting a 
 systems that are meant to be understood and upgraded, not patched into oblivion and thrown away
 when the weight of all the lost system knowledge becomes too heavy. Recently I've been doing a ton
 of CAD and 3d printing, and that's been a wonderful creative outlet to hone my prototyping skills.
-Right now I'm looking for work that lets me feel really useful - shoot me an email if you think I
-might be a good fit for a project you know about!
+Right now I'm focusing on finding work that makes me feel useful.
 """
 
 
@@ -198,14 +197,14 @@ about =
             [ text "Here's what I'm about:" ]
         , div [ class "blurbs" ]
             [ div blurbStyles
-                [ h3 []
+                [ h3 [ style "text-align" "center" ]
                     [ text "Present:" ]
                 , span
                     []
                     [ text presentBlurb ]
                 ]
             , div blurbStyles
-                [ h3 []
+                [ h3 [ style "text-align" "center" ]
                     [ text "Future:" ]
                 , span
                     []

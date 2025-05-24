@@ -5511,7 +5511,7 @@ var $author$project$Projects$AbarthHatchbackSwitch$content = _List_fromArray(
 					]),
 				_List_fromArray(
 					[
-						$elm$html$Html$text('A Bit of Background')
+						$elm$html$Html$text('The Complication')
 					])),
 				$author$project$Projects$AbarthHatchbackSwitch$background,
 				A2(
@@ -5671,7 +5671,7 @@ var $author$project$Main$blurbStyles = _List_fromArray(
 	]);
 var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
-var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\nRight now I\'m looking for work that lets me feel really useful - shoot me an email if you think I\nmight be a good fit for a project you know about!\n';
+var $author$project$Main$presentBlurb = 'I love domain modeling, functional programming, and making code understandable.\nI\'m on the more extroverted side for a software developer, and I LOVE getting a chance to design\nsystems that are meant to be understood and upgraded, not patched into oblivion and thrown away\nwhen the weight of all the lost system knowledge becomes too heavy. Recently I\'ve been doing a ton\nof CAD and 3d printing, and that\'s been a wonderful creative outlet to hone my prototyping skills.\nRight now I\'m focusing on finding work that makes me feel useful.\n';
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$about = A2(
 	$elm$html$Html$div,
@@ -5703,7 +5703,10 @@ var $author$project$Main$about = A2(
 						[
 							A2(
 							$elm$html$Html$h3,
-							_List_Nil,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+								]),
 							_List_fromArray(
 								[
 									$elm$html$Html$text('Present:')
@@ -5723,7 +5726,10 @@ var $author$project$Main$about = A2(
 						[
 							A2(
 							$elm$html$Html$h3,
-							_List_Nil,
+							_List_fromArray(
+								[
+									A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+								]),
 							_List_fromArray(
 								[
 									$elm$html$Html$text('Future:')
