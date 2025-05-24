@@ -1857,9 +1857,9 @@ var _Platform_worker = F4(function(impl, flagDecoder, debugMetadata, args)
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.ax,
-		impl.aG,
-		impl.aF,
+		impl.aA,
+		impl.aJ,
+		impl.aI,
 		function() { return function() {} }
 	);
 });
@@ -3943,11 +3943,11 @@ var _Browser_element = _Debugger_element || F4(function(impl, flagDecoder, debug
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.ax,
-		impl.aG,
-		impl.aF,
+		impl.aA,
+		impl.aJ,
+		impl.aI,
 		function(sendToApp, initialModel) {
-			var view = impl.aH;
+			var view = impl.aK;
 			/**/
 			var domNode = args['node'];
 			//*/
@@ -3979,12 +3979,12 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 	return _Platform_initialize(
 		flagDecoder,
 		args,
-		impl.ax,
-		impl.aG,
-		impl.aF,
+		impl.aA,
+		impl.aJ,
+		impl.aI,
 		function(sendToApp, initialModel) {
 			var divertHrefToApp = impl.J && impl.J(sendToApp)
-			var view = impl.aH;
+			var view = impl.aK;
 			var title = _VirtualDom_doc.title;
 			var bodyNode = _VirtualDom_doc.body;
 			var currNode = _VirtualDom_virtualize(bodyNode);
@@ -3997,7 +3997,7 @@ var _Browser_document = _Debugger_document || F4(function(impl, flagDecoder, deb
 				bodyNode = _VirtualDom_applyPatches(bodyNode, currNode, patches, sendToApp);
 				currNode = nextNode;
 				_VirtualDom_divertHrefToApp = 0;
-				(title !== doc.ai) && (_VirtualDom_doc.title = title = doc.ai);
+				(title !== doc.ak) && (_VirtualDom_doc.title = title = doc.ak);
 			});
 		}
 	);
@@ -4053,8 +4053,8 @@ function _Browser_makeAnimator(model, draw)
 
 function _Browser_application(impl)
 {
-	var onUrlChange = impl.aA;
-	var onUrlRequest = impl.aB;
+	var onUrlChange = impl.aD;
+	var onUrlRequest = impl.aE;
 	var key = function() { key.a(onUrlChange(_Browser_getUrl())); };
 
 	return _Browser_document({
@@ -4074,9 +4074,9 @@ function _Browser_application(impl)
 					var next = $elm$url$Url$fromString(href).a;
 					sendToApp(onUrlRequest(
 						(next
-							&& curr.ab === next.ab
+							&& curr.ad === next.ad
 							&& curr.U === next.U
-							&& curr.Z.a === next.Z.a
+							&& curr.aa.a === next.aa.a
 						)
 							? $elm$browser$Browser$Internal(next)
 							: $elm$browser$Browser$External(href)
@@ -4084,13 +4084,13 @@ function _Browser_application(impl)
 				}
 			});
 		},
-		ax: function(flags)
+		aA: function(flags)
 		{
-			return A3(impl.ax, flags, _Browser_getUrl(), key);
+			return A3(impl.aA, flags, _Browser_getUrl(), key);
 		},
-		aH: impl.aH,
-		aG: impl.aG,
-		aF: impl.aF
+		aK: impl.aK,
+		aJ: impl.aJ,
+		aI: impl.aI
 	});
 }
 
@@ -4156,17 +4156,17 @@ var _Browser_decodeEvent = F2(function(decoder, event)
 function _Browser_visibilityInfo()
 {
 	return (typeof _VirtualDom_doc.hidden !== 'undefined')
-		? { av: 'hidden', ap: 'visibilitychange' }
+		? { ay: 'hidden', as: 'visibilitychange' }
 		:
 	(typeof _VirtualDom_doc.mozHidden !== 'undefined')
-		? { av: 'mozHidden', ap: 'mozvisibilitychange' }
+		? { ay: 'mozHidden', as: 'mozvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.msHidden !== 'undefined')
-		? { av: 'msHidden', ap: 'msvisibilitychange' }
+		? { ay: 'msHidden', as: 'msvisibilitychange' }
 		:
 	(typeof _VirtualDom_doc.webkitHidden !== 'undefined')
-		? { av: 'webkitHidden', ap: 'webkitvisibilitychange' }
-		: { av: 'hidden', ap: 'visibilitychange' };
+		? { ay: 'webkitHidden', as: 'webkitvisibilitychange' }
+		: { ay: 'hidden', as: 'visibilitychange' };
 }
 
 
@@ -4247,11 +4247,11 @@ var _Browser_call = F2(function(functionName, id)
 function _Browser_getViewport()
 {
 	return {
-		af: _Browser_getScene(),
-		aj: {
-			al: _Browser_window.pageXOffset,
-			am: _Browser_window.pageYOffset,
-			ak: _Browser_doc.documentElement.clientWidth,
+		ah: _Browser_getScene(),
+		am: {
+			ao: _Browser_window.pageXOffset,
+			ap: _Browser_window.pageYOffset,
+			an: _Browser_doc.documentElement.clientWidth,
 			T: _Browser_doc.documentElement.clientHeight
 		}
 	};
@@ -4262,7 +4262,7 @@ function _Browser_getScene()
 	var body = _Browser_doc.body;
 	var elem = _Browser_doc.documentElement;
 	return {
-		ak: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
+		an: Math.max(body.scrollWidth, body.offsetWidth, elem.scrollWidth, elem.offsetWidth, elem.clientWidth),
 		T: Math.max(body.scrollHeight, body.offsetHeight, elem.scrollHeight, elem.offsetHeight, elem.clientHeight)
 	};
 }
@@ -4286,14 +4286,14 @@ function _Browser_getViewportOf(id)
 	return _Browser_withNode(id, function(node)
 	{
 		return {
-			af: {
-				ak: node.scrollWidth,
+			ah: {
+				an: node.scrollWidth,
 				T: node.scrollHeight
 			},
-			aj: {
-				al: node.scrollLeft,
-				am: node.scrollTop,
-				ak: node.clientWidth,
+			am: {
+				ao: node.scrollLeft,
+				ap: node.scrollTop,
+				an: node.clientWidth,
 				T: node.clientHeight
 			}
 		};
@@ -4324,17 +4324,17 @@ function _Browser_getElement(id)
 		var x = _Browser_window.pageXOffset;
 		var y = _Browser_window.pageYOffset;
 		return {
-			af: _Browser_getScene(),
-			aj: {
-				al: x,
-				am: y,
-				ak: _Browser_doc.documentElement.clientWidth,
+			ah: _Browser_getScene(),
+			am: {
+				ao: x,
+				ap: y,
+				an: _Browser_doc.documentElement.clientWidth,
 				T: _Browser_doc.documentElement.clientHeight
 			},
-			as: {
-				al: x + rect.left,
-				am: y + rect.top,
-				ak: rect.width,
+			av: {
+				ao: x + rect.left,
+				ap: y + rect.top,
+				an: rect.width,
 				T: rect.height
 			}
 		};
@@ -4880,7 +4880,7 @@ var $elm$url$Url$Http = 0;
 var $elm$url$Url$Https = 1;
 var $elm$url$Url$Url = F6(
 	function (protocol, host, port_, path, query, fragment) {
-		return {S: fragment, U: host, H: path, Z: port_, ab: protocol, ac: query};
+		return {S: fragment, U: host, H: path, aa: port_, ad: protocol, ae: query};
 	});
 var $elm$core$String$contains = _String_contains;
 var $elm$core$String$length = _String_length;
@@ -5161,18 +5161,34 @@ var $elm$core$Task$perform = F2(
 var $elm$browser$Browser$application = _Browser_application;
 var $author$project$Domain$Model = F3(
 	function (key, url, projects) {
-		return {ay: key, aD: projects, M: url};
+		return {aB: key, aG: projects, M: url};
 	});
 var $elm$core$Platform$Cmd$batch = _Platform_batch;
 var $elm$core$Platform$Cmd$none = $elm$core$Platform$Cmd$batch(_List_Nil);
 var $author$project$Domain$ExternalProject = F3(
 	function (title, imgUrl, url) {
-		return {V: imgUrl, ai: title, M: url};
+		return {W: imgUrl, ak: title, M: url};
 	});
 var $author$project$Domain$Writeup = F4(
 	function (title, url, imgUrl, content) {
-		return {aq: content, V: imgUrl, ai: title, M: url};
+		return {at: content, W: imgUrl, ak: title, M: url};
 	});
+var $author$project$Projects$AbarthHatchbackSwitch$backgroundInfo = '\nWe could potentially buy a new one... but can we fix the old one?\n';
+var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$img = _VirtualDom_node('img');
+var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
+var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
+var $author$project$Projects$AbarthHatchbackSwitch$leftStyle = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'background-color', 'lightblue'),
+		A2($elm$html$Html$Attributes$style, 'padding', '25px')
+	]);
+var $elm$html$Html$p = _VirtualDom_node('p');
+var $author$project$Projects$AbarthHatchbackSwitch$rightStyle = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'background-color', 'salmon'),
+		A2($elm$html$Html$Attributes$style, 'padding', '25px')
+	]);
 var $elm$json$Json$Encode$string = _Json_wrap;
 var $elm$html$Html$Attributes$stringProperty = F2(
 	function (key, string) {
@@ -5181,11 +5197,101 @@ var $elm$html$Html$Attributes$stringProperty = F2(
 			key,
 			$elm$json$Json$Encode$string(string));
 	});
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
-var $elm$html$Html$div = _VirtualDom_node('div');
+var $elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		$elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
+var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
+var $author$project$Projects$AbarthHatchbackSwitch$topStyle = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'background-color', 'purple'),
+		A2($elm$html$Html$Attributes$style, 'display', 'flex')
+	]);
+var $author$project$Projects$AbarthHatchbackSwitch$background = A2(
+	$elm$html$Html$div,
+	$author$project$Projects$AbarthHatchbackSwitch$topStyle,
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			$author$project$Projects$AbarthHatchbackSwitch$leftStyle,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'width', '300px'),
+							$elm$html$Html$Attributes$src('resources/abarth_hatchback_switch/hatchback_switch.jpg')
+						]),
+					_List_Nil)
+				])),
+			A2(
+			$elm$html$Html$div,
+			$author$project$Projects$AbarthHatchbackSwitch$rightStyle,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text($author$project$Projects$AbarthHatchbackSwitch$backgroundInfo)
+						]))
+				]))
+		]));
+var $author$project$Styles$centeredBlock = function (width) {
+	return _List_fromArray(
+		[
+			A2($elm$html$Html$Attributes$style, 'max-width', width),
+			A2($elm$html$Html$Attributes$style, 'margin', 'auto')
+		]);
+};
 var $elm$html$Html$h1 = _VirtualDom_node('h1');
 var $elm$html$Html$h2 = _VirtualDom_node('h2');
+var $author$project$Projects$AbarthHatchbackSwitch$problemStatement = '\nThere\'s this little rubber/metal piece that fell out of my car\'s\ntrunk switch. That little piece falling out meant that the only way\nto open the trunk was to bridge the connection between those two metal\nbits with another metal bit.\n';
+var $author$project$Projects$AbarthHatchbackSwitch$problem = A2(
+	$elm$html$Html$div,
+	$author$project$Projects$AbarthHatchbackSwitch$topStyle,
+	_List_fromArray(
+		[
+			A2(
+			$elm$html$Html$div,
+			$author$project$Projects$AbarthHatchbackSwitch$leftStyle,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$p,
+					_List_Nil,
+					_List_fromArray(
+						[
+							$elm$html$Html$text($author$project$Projects$AbarthHatchbackSwitch$problemStatement)
+						]))
+				])),
+			A2(
+			$elm$html$Html$div,
+			$author$project$Projects$AbarthHatchbackSwitch$rightStyle,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'width', '300px'),
+							$elm$html$Html$Attributes$src('resources/abarth_hatchback_switch/problem.png')
+						]),
+					_List_Nil)
+				]))
+		]));
+var $author$project$View$LinkCard = F3(
+	function (titleText, imageUrl, linkUrl) {
+		return {V: imageUrl, X: linkUrl, al: titleText};
+	});
 var $author$project$Projects$AbarthHatchbackSwitch$cadImageUrl = 'resources/abarth_hatchback_switch/cad_image.png';
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
 var $elm$html$Html$Attributes$href = function (url) {
@@ -5194,18 +5300,6 @@ var $elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
-var $elm$html$Html$img = _VirtualDom_node('img');
-var $elm$html$Html$p = _VirtualDom_node('p');
-var $elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		$elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
-var $elm$virtual_dom$VirtualDom$style = _VirtualDom_style;
-var $elm$html$Html$Attributes$style = $elm$virtual_dom$VirtualDom$style;
-var $elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
-var $elm$html$Html$text = $elm$virtual_dom$VirtualDom$text;
 var $author$project$View$gridSquare = F3(
 	function (squareTitle, imageUrl, linkUrl) {
 		return A2(
@@ -5248,68 +5342,41 @@ var $author$project$View$gridSquare = F3(
 						]))
 				]));
 	});
+var $author$project$View$linkGrid = function (cards) {
+	return A2(
+		$elm$html$Html$div,
+		_List_fromArray(
+			[
+				A2($elm$html$Html$Attributes$style, 'width', '85%'),
+				A2($elm$html$Html$Attributes$style, 'margin', 'auto')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				$elm$html$Html$div,
+				_List_fromArray(
+					[
+						$elm$html$Html$Attributes$class('grid')
+					]),
+				A2(
+					$elm$core$List$map,
+					function (card) {
+						return A3($author$project$View$gridSquare, card.al, card.V, card.X);
+					},
+					cards))
+			]));
+};
 var $author$project$Projects$AbarthHatchbackSwitch$onShapeLink = 'https://cad.onshape.com/documents/b8da71bf08e5c9d46fb181f8/w/20624b93d096747d7f377128/e/3bde4f35106b4f1591af2967';
-var $author$project$Projects$AbarthHatchbackSwitch$onShapeGridSquare = A3($author$project$View$gridSquare, 'OnShape Document', $author$project$Projects$AbarthHatchbackSwitch$cadImageUrl, $author$project$Projects$AbarthHatchbackSwitch$onShapeLink);
 var $author$project$Projects$AbarthHatchbackSwitch$resources = A2(
 	$elm$html$Html$div,
 	_List_Nil,
 	_List_fromArray(
 		[
-			A2(
-			$elm$html$Html$h2,
-			_List_Nil,
+			$author$project$View$linkGrid(
 			_List_fromArray(
 				[
-					$elm$html$Html$text('Resources')
-				])),
-			$author$project$Projects$AbarthHatchbackSwitch$onShapeGridSquare
-		]));
-var $author$project$Projects$AbarthHatchbackSwitch$leftStyle = _List_fromArray(
-	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'lightblue'),
-		A2($elm$html$Html$Attributes$style, 'padding', '25px')
-	]);
-var $author$project$Projects$AbarthHatchbackSwitch$problemStatement = '\nThere\'s this little rubber/metal piece that fell out of my car\'s\ntrunk switch. That little piece falling out meant that the only way\nto open the trunk was to bridge the connection between those two metal\nbits with another metal bit. Apparently, you can\'t buy just this\nmissing bit, you have to buy the larger assembly. That\'s dumb.\n';
-var $author$project$Projects$AbarthHatchbackSwitch$rightStyle = _List_fromArray(
-	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'salmon'),
-		A2($elm$html$Html$Attributes$style, 'padding', '25px')
-	]);
-var $author$project$Projects$AbarthHatchbackSwitch$topStyle = _List_fromArray(
-	[
-		A2($elm$html$Html$Attributes$style, 'background-color', 'purple'),
-		A2($elm$html$Html$Attributes$style, 'display', 'flex')
-	]);
-var $author$project$Projects$AbarthHatchbackSwitch$problem = A2(
-	$elm$html$Html$div,
-	$author$project$Projects$AbarthHatchbackSwitch$topStyle,
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$div,
-			$author$project$Projects$AbarthHatchbackSwitch$leftStyle,
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$p,
-					_List_Nil,
-					_List_fromArray(
-						[
-							$elm$html$Html$text($author$project$Projects$AbarthHatchbackSwitch$problemStatement)
-						]))
-				])),
-			A2(
-			$elm$html$Html$div,
-			$author$project$Projects$AbarthHatchbackSwitch$rightStyle,
-			_List_fromArray(
-				[
-					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$src('resources/abarth_hatchback_switch/cad_image.png')
-						]),
-					_List_Nil)
+					A3($author$project$View$LinkCard, 'OnShape Document', $author$project$Projects$AbarthHatchbackSwitch$cadImageUrl, $author$project$Projects$AbarthHatchbackSwitch$onShapeLink),
+					A3($author$project$View$LinkCard, 'STL Files', 'resources/abarth_hatchback_switch/prototype_stl.png', 'resources/abarth_hatchback_switch/switch_parts.stl')
 				]))
 		]));
 var $elm$html$Html$li = _VirtualDom_node('li');
@@ -5325,23 +5392,11 @@ var $author$project$Projects$AbarthHatchbackSwitch$solution = A2(
 			_List_fromArray(
 				[
 					A2(
-					$elm$html$Html$img,
-					_List_fromArray(
-						[
-							$elm$html$Html$Attributes$src('resources/abarth_hatchback_switch/cad_image.png')
-						]),
-					_List_Nil)
-				])),
-			A2(
-			$elm$html$Html$div,
-			$author$project$Projects$AbarthHatchbackSwitch$rightStyle,
-			_List_fromArray(
-				[
-					A2(
 					$elm$html$Html$ol,
 					_List_fromArray(
 						[
-							A2($elm$html$Html$Attributes$style, 'text-align', 'left')
+							A2($elm$html$Html$Attributes$style, 'text-align', 'left'),
+							A2($elm$html$Html$Attributes$style, 'margin', '25px')
 						]),
 					_List_fromArray(
 						[
@@ -5395,51 +5450,84 @@ var $author$project$Projects$AbarthHatchbackSwitch$solution = A2(
 									$elm$html$Html$text('Install new design.')
 								]))
 						]))
+				])),
+			A2(
+			$elm$html$Html$div,
+			$author$project$Projects$AbarthHatchbackSwitch$rightStyle,
+			_List_fromArray(
+				[
+					A2(
+					$elm$html$Html$img,
+					_List_fromArray(
+						[
+							A2($elm$html$Html$Attributes$style, 'width', '250px'),
+							$elm$html$Html$Attributes$src('resources/abarth_hatchback_switch/prototype.png')
+						]),
+					_List_Nil)
 				]))
-		]));
-var $author$project$Projects$AbarthHatchbackSwitch$story = A2(
-	$elm$html$Html$div,
-	_List_Nil,
-	_List_fromArray(
-		[
-			A2(
-			$elm$html$Html$h2,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('I Have A Problem')
-				])),
-			$author$project$Projects$AbarthHatchbackSwitch$problem,
-			A2(
-			$elm$html$Html$h2,
-			_List_Nil,
-			_List_fromArray(
-				[
-					$elm$html$Html$text('Solution')
-				])),
-			$author$project$Projects$AbarthHatchbackSwitch$solution
 		]));
 var $author$project$Projects$AbarthHatchbackSwitch$title = 'Making a New Abarth Hatchback Switch';
 var $author$project$Projects$AbarthHatchbackSwitch$content = _List_fromArray(
 	[
 		A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('centered-container'),
-				A2($elm$html$Html$Attributes$style, 'max-width', '80%'),
-				A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-			]),
+		$author$project$Styles$centeredBlock('55%'),
 		_List_fromArray(
 			[
 				A2(
 				$elm$html$Html$h1,
-				_List_Nil,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center'),
+						A2($elm$html$Html$Attributes$style, 'margin-top', '5%')
+					]),
 				_List_fromArray(
 					[
 						$elm$html$Html$text($author$project$Projects$AbarthHatchbackSwitch$title)
 					])),
-				$author$project$Projects$AbarthHatchbackSwitch$story,
+				A2(
+				$elm$html$Html$h2,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('I Have A Problem')
+					])),
+				$author$project$Projects$AbarthHatchbackSwitch$problem,
+				A2(
+				$elm$html$Html$h2,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('A Bit of Background')
+					])),
+				$author$project$Projects$AbarthHatchbackSwitch$background,
+				A2(
+				$elm$html$Html$h2,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Solution')
+					])),
+				$author$project$Projects$AbarthHatchbackSwitch$solution,
+				A2(
+				$elm$html$Html$h2,
+				_List_fromArray(
+					[
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+					]),
+				_List_fromArray(
+					[
+						$elm$html$Html$text('Resources')
+					])),
 				$author$project$Projects$AbarthHatchbackSwitch$resources
 			]))
 	]);
@@ -5447,7 +5535,7 @@ var $author$project$Projects$AbarthHatchbackSwitch$imageUrl = 'resources/logo_ab
 var $author$project$Projects$AbarthHatchbackSwitch$linkUrl = '/abarth-hatchback-switch';
 var $author$project$Projects$AbarthHatchbackSwitch$project = A4($author$project$Domain$Writeup, $author$project$Projects$AbarthHatchbackSwitch$title, $author$project$Projects$AbarthHatchbackSwitch$linkUrl, $author$project$Projects$AbarthHatchbackSwitch$imageUrl, $author$project$Projects$AbarthHatchbackSwitch$content);
 var $author$project$Main$projects = {
-	au: _List_fromArray(
+	ax: _List_fromArray(
 		[
 			A3($author$project$Domain$ExternalProject, 'Playing Chess', 'https://lichess1.org/assets/______3/flair/img/activity.lichess.webp', 'https://lichess.org/@/kadenjtaylor'),
 			A3($author$project$Domain$ExternalProject, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
@@ -5455,7 +5543,7 @@ var $author$project$Main$projects = {
 			A3($author$project$Domain$ExternalProject, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
 			A3($author$project$Domain$ExternalProject, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
 		]),
-	aJ: _List_fromArray(
+	aM: _List_fromArray(
 		[$author$project$Projects$AbarthHatchbackSwitch$project])
 };
 var $author$project$Main$init = F3(
@@ -5493,7 +5581,7 @@ var $elm$url$Url$addPrefixed = F3(
 	});
 var $elm$url$Url$toString = function (url) {
 	var http = function () {
-		var _v0 = url.ab;
+		var _v0 = url.ad;
 		if (!_v0) {
 			return 'http://';
 		} else {
@@ -5507,11 +5595,11 @@ var $elm$url$Url$toString = function (url) {
 		A3(
 			$elm$url$Url$addPrefixed,
 			'?',
-			url.ac,
+			url.ae,
 			_Utils_ap(
 				A2(
 					$elm$url$Url$addPort,
-					url.Z,
+					url.aa,
 					_Utils_ap(http, url.U)),
 				url.H)));
 };
@@ -5528,7 +5616,7 @@ var $author$project$Main$update = F2(
 					model,
 					A2(
 						$elm$browser$Browser$Navigation$pushUrl,
-						model.ay,
+						model.aB,
 						$elm$url$Url$toString(url)));
 			} else {
 				var href = urlRequest.a;
@@ -5580,17 +5668,15 @@ var $author$project$Main$presentBlurb = 'I love domain modeling, functional prog
 var $elm$html$Html$span = _VirtualDom_node('span');
 var $author$project$Main$about = A2(
 	$elm$html$Html$div,
-	_List_fromArray(
-		[
-			$elm$html$Html$Attributes$class('centered-container'),
-			A2($elm$html$Html$Attributes$style, 'max-width', '80%'),
-			A2($elm$html$Html$Attributes$style, 'margin', 'auto')
-		]),
+	$author$project$Styles$centeredBlock('80%'),
 	_List_fromArray(
 		[
 			A2(
 			$elm$html$Html$h2,
-			_List_Nil,
+			_List_fromArray(
+				[
+					A2($elm$html$Html$Attributes$style, 'text-align', 'center')
+				]),
 			_List_fromArray(
 				[
 					$elm$html$Html$text('Here\'s what I\'m about:')
@@ -5819,46 +5905,32 @@ var $author$project$Main$projectGrid = function (ps) {
 	var writeupSquares = A2(
 		$elm$core$List$map,
 		function (w) {
-			return A3($author$project$View$gridSquare, w.ai, w.V, w.M);
+			return A3($author$project$View$LinkCard, w.ak, w.W, w.M);
 		},
-		ps.aJ);
+		ps.aM);
 	var externalSquares = A2(
 		$elm$core$List$map,
 		function (p) {
-			return A3($author$project$View$gridSquare, p.ai, p.V, p.M);
+			return A3($author$project$View$LinkCard, p.ak, p.W, p.M);
 		},
-		ps.au);
+		ps.ax);
 	return A2(
 		$elm$html$Html$div,
-		_List_fromArray(
-			[
-				$elm$html$Html$Attributes$class('centered-container')
-			]),
+		_List_Nil,
 		_List_fromArray(
 			[
 				A2(
 				$elm$html$Html$h2,
-				_List_Nil,
 				_List_fromArray(
 					[
-						$elm$html$Html$text('Here\'s some stuff I\'m doing:')
-					])),
-				A2(
-				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						A2($elm$html$Html$Attributes$style, 'width', '85%')
+						A2($elm$html$Html$Attributes$style, 'text-align', 'center')
 					]),
 				_List_fromArray(
 					[
-						A2(
-						$elm$html$Html$div,
-						_List_fromArray(
-							[
-								$elm$html$Html$Attributes$class('grid')
-							]),
-						_Utils_ap(externalSquares, writeupSquares))
-					]))
+						$elm$html$Html$text('Here\'s what I\'ve been up to:')
+					])),
+				$author$project$View$linkGrid(
+				_Utils_ap(externalSquares, writeupSquares))
 			]));
 };
 var $author$project$Main$homePage = function (model) {
@@ -5866,7 +5938,7 @@ var $author$project$Main$homePage = function (model) {
 		[
 			$author$project$Main$header,
 			$author$project$Main$about,
-			$author$project$Main$projectGrid(model.aD)
+			$author$project$Main$projectGrid(model.aG)
 		]);
 };
 var $elm$html$Html$br = _VirtualDom_node('br');
@@ -5875,10 +5947,7 @@ var $author$project$Main$notFoundPage = function (model) {
 		[
 			A2(
 			$elm$html$Html$div,
-			_List_fromArray(
-				[
-					$elm$html$Html$Attributes$class('centered-container')
-				]),
+			_List_Nil,
 			_List_fromArray(
 				[
 					A2($elm$html$Html$br, _List_Nil, _List_Nil),
@@ -5908,26 +5977,26 @@ var $author$project$Main$view = function (model) {
 			function (w) {
 				return _Utils_eq(w.M, model.M.H);
 			},
-			model.aD.aJ));
+			model.aG.aM));
 	if (!targetWriteup.$) {
 		var w = targetWriteup.a;
-		return {E: w.aq, ai: w.ai};
+		return {E: w.at, ak: w.ak};
 	} else {
 		var _v1 = model.M.H;
 		if (_v1 === '/') {
 			return {
 				E: $author$project$Main$homePage(model),
-				ai: 'Kaden.DEV'
+				ak: 'Kaden.DEV'
 			};
 		} else {
 			return {
 				E: $author$project$Main$notFoundPage(model),
-				ai: 'NOT FOUND'
+				ak: 'NOT FOUND'
 			};
 		}
 	}
 };
 var $author$project$Main$main = $elm$browser$Browser$application(
-	{ax: $author$project$Main$init, aA: $author$project$Domain$UrlChanged, aB: $author$project$Domain$LinkClicked, aF: $author$project$Main$subscriptions, aG: $author$project$Main$update, aH: $author$project$Main$view});
+	{aA: $author$project$Main$init, aD: $author$project$Domain$UrlChanged, aE: $author$project$Domain$LinkClicked, aI: $author$project$Main$subscriptions, aJ: $author$project$Main$update, aK: $author$project$Main$view});
 _Platform_export({'Main':{'init':$author$project$Main$main(
 	$elm$json$Json$Decode$succeed(0))(0)}});}(this));

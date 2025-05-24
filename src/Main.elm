@@ -6,8 +6,9 @@ import Domain exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Projects.AbarthHatchbackSwitch
+import Styles exposing (centeredBlock)
 import Url
-import View exposing (gridSquare)
+import View exposing (LinkCard)
 
 
 
@@ -83,15 +84,6 @@ update msg model =
 subscriptions : Model -> Sub Msg
 subscriptions _ =
     Sub.none
-
-
-
--- VIEW
--- writeupLookup : List Writeup -> String -> Maybe Writeup
--- writeupLookup ps path =
---     let thingToCompare = path
---     List.filter (\p -> p.url.path == String.concat [ "/", path ]) ps
---         |> List.head
 
 
 view : Model -> Browser.Document Msg
@@ -201,8 +193,8 @@ blurbStyles =
 about : Html Msg
 about =
     div
-        [ class "centered-container", style "max-width" "80%", style "margin" "auto" ]
-        [ h2 []
+        (centeredBlock "80%")
+        [ h2 [ style "text-align" "center" ]
             [ text "Here's what I'm about:" ]
         , div [ class "blurbs" ]
             [ div blurbStyles
@@ -227,23 +219,15 @@ projectGrid : ProjectDirectory -> Html Msg
 projectGrid ps =
     let
         externalSquares =
-            List.map (\p -> gridSquare p.title p.imgUrl p.url) ps.external
+            List.map (\p -> LinkCard p.title p.imgUrl p.url) ps.external
 
         writeupSquares =
-            List.map (\w -> gridSquare w.title w.imgUrl w.url) ps.writeups
+            List.map (\w -> LinkCard w.title w.imgUrl w.url) ps.writeups
     in
-    div
-        [ class "centered-container"
-        ]
-        [ h2 []
-            [ text "Here's some stuff I'm doing:" ]
-        , div
-            [ style "width" "85%"
-            ]
-            [ div
-                [ class "grid" ]
-                (externalSquares ++ writeupSquares)
-            ]
+    div []
+        [ h2 [ style "text-align" "center" ]
+            [ text "Here's what I've been up to:" ]
+        , View.linkGrid (externalSquares ++ writeupSquares)
         ]
 
 
@@ -257,7 +241,7 @@ homePage model =
 
 notFoundPage : Model -> List (Html Msg)
 notFoundPage model =
-    [ div [ class "centered-container" ]
+    [ div []
         [ br []
             []
         , br []

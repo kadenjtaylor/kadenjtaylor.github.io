@@ -1,9 +1,11 @@
 module Projects.AbarthHatchbackSwitch exposing (..)
 
+import Browser.Navigation exposing (back)
 import Domain exposing (Msg, Writeup)
 import Html exposing (..)
 import Html.Attributes exposing (class, src, style)
-import View exposing (gridSquare)
+import Styles exposing (centeredBlock)
+import View exposing (..)
 
 
 title : String
@@ -36,11 +38,6 @@ cadImageUrl =
     "resources/abarth_hatchback_switch/cad_image.png"
 
 
-onShapeGridSquare : Html Msg
-onShapeGridSquare =
-    gridSquare "OnShape Document" cadImageUrl onShapeLink
-
-
 topStyle : List (Attribute Msg)
 topStyle =
     [ style "background-color" "purple"
@@ -68,8 +65,7 @@ problemStatement =
 There's this little rubber/metal piece that fell out of my car's
 trunk switch. That little piece falling out meant that the only way
 to open the trunk was to bridge the connection between those two metal
-bits with another metal bit. Apparently, you can't buy just this
-missing bit, you have to buy the larger assembly. That's dumb.
+bits with another metal bit.
 """
 
 
@@ -77,16 +73,30 @@ problem : Html Msg
 problem =
     div topStyle
         [ div leftStyle [ p [] [ text problemStatement ] ]
-        , div rightStyle [ img [ src "resources/abarth_hatchback_switch/cad_image.png" ] [] ]
+        , div rightStyle [ img [ style "width" "300px", src "resources/abarth_hatchback_switch/problem.png" ] [] ]
+        ]
+
+
+backgroundInfo : String
+backgroundInfo =
+    """
+We could potentially buy a new one... but can we fix the old one?
+"""
+
+
+background : Html Msg
+background =
+    div topStyle
+        [ div leftStyle [ img [ style "width" "300px", src "resources/abarth_hatchback_switch/hatchback_switch.jpg" ] [] ]
+        , div rightStyle [ p [] [ text backgroundInfo ] ]
         ]
 
 
 solution : Html Msg
 solution =
     div topStyle
-        [ div leftStyle [ img [ src "resources/abarth_hatchback_switch/cad_image.png" ] [] ]
-        , div rightStyle
-            [ ol [ style "text-align" "left" ]
+        [ div leftStyle
+            [ ol [ style "text-align" "left", style "margin" "25px" ]
                 [ li [] [ text "Buy and assemble a 3D printer." ]
                 , li [] [ text "Learn enough CAD to construct the basic shell + plunger design." ]
                 , li [] [ text "Steal some nickel strips from a spot-welding kit." ]
@@ -96,27 +106,32 @@ solution =
                 , li [] [ text "Install new design." ]
                 ]
             ]
-        ]
-
-
-story : Html Msg
-story =
-    div []
-        [ h2 [] [ text "I Have A Problem" ]
-        , problem
-        , h2 [] [ text "Solution" ]
-        , solution
+        , div rightStyle
+            [ img [ style "width" "250px", src "resources/abarth_hatchback_switch/prototype.png" ] [] ]
         ]
 
 
 resources : Html Msg
 resources =
     div []
-        [ h2 [] [ text "Resources" ]
-        , onShapeGridSquare
+        [ View.linkGrid
+            [ View.LinkCard "OnShape Document" cadImageUrl onShapeLink
+            , View.LinkCard "STL Files" "resources/abarth_hatchback_switch/prototype_stl.png" "resources/abarth_hatchback_switch/switch_parts.stl"
+            ]
         ]
 
 
 content : List (Html Msg)
 content =
-    [ div [ class "centered-container", style "max-width" "80%", style "margin" "auto" ] [ h1 [] [ text title ], story, resources ] ]
+    [ div (centeredBlock "55%")
+        [ h1 [ style "text-align" "center", style "margin-top" "5%" ] [ text title ]
+        , h2 [ style "text-align" "center" ] [ text "I Have A Problem" ]
+        , problem
+        , h2 [ style "text-align" "center" ] [ text "A Bit of Background" ]
+        , background
+        , h2 [ style "text-align" "center" ] [ text "Solution" ]
+        , solution
+        , h2 [ style "text-align" "center" ] [ text "Resources" ]
+        , resources
+        ]
+    ]
