@@ -7,6 +7,7 @@ import Html exposing (..)
 import Html.Attributes exposing (..)
 import Projects.AbarthHatchbackSwitch
 import Url
+import View exposing (gridSquare)
 
 
 
@@ -226,10 +227,10 @@ projectGrid : ProjectDirectory -> Html Msg
 projectGrid ps =
     let
         externalSquares =
-            List.map gridSquareExternal ps.external
+            List.map (\p -> gridSquare p.title p.imgUrl p.url) ps.external
 
         writeupSquares =
-            List.map gridSquareWriteup ps.writeups
+            List.map (\w -> gridSquare w.title w.imgUrl w.url) ps.writeups
     in
     div
         [ class "centered-container"
@@ -242,42 +243,6 @@ projectGrid ps =
             [ div
                 [ class "grid" ]
                 (externalSquares ++ writeupSquares)
-            ]
-        ]
-
-
-gridSquareExternal : ExternalProject -> Html Msg
-gridSquareExternal proj =
-    div
-        [ class "square"
-        ]
-        [ a [ style "width" "100%", style "height" "100%", style "padding" "10px", href proj.url ]
-            [ img
-                [ src proj.imgUrl
-                , alt proj.title
-                ]
-                []
-            , p
-                [ class "title" ]
-                [ text proj.title ]
-            ]
-        ]
-
-
-gridSquareWriteup : Writeup -> Html Msg
-gridSquareWriteup w =
-    div
-        [ class "square"
-        ]
-        [ a [ style "width" "100%", style "height" "100%", style "padding" "10px", style "text-decoration" "none", style "text-decoration" "none", href w.url ]
-            [ img
-                [ src w.imgUrl
-                , alt w.title
-                ]
-                []
-            , p
-                [ class "title" ]
-                [ text w.title ]
             ]
         ]
 
