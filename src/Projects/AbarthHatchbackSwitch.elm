@@ -1,9 +1,8 @@
 module Projects.AbarthHatchbackSwitch exposing (..)
 
-import Browser.Navigation exposing (back)
 import Domain exposing (Msg, Writeup)
 import Html exposing (..)
-import Html.Attributes exposing (class, src, style)
+import Html.Attributes exposing (src, style)
 import Styles exposing (centeredBlock)
 import View exposing (..)
 
