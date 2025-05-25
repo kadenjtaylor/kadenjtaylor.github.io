@@ -5296,9 +5296,15 @@ var $author$project$View$LinkCard = F3(
 		return {V: imageUrl, X: linkUrl, al: titleText};
 	});
 var $author$project$Projects$AbarthHatchbackSwitch$cadImageUrl = 'resources/abarth_hatchback_switch/cad_image.png';
-var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
+var $author$project$Styles$grid = _List_fromArray(
+	[
+		A2($elm$html$Html$Attributes$style, 'display', 'grid'),
+		A2($elm$html$Html$Attributes$style, 'grid-template-columns', 'repeat(auto-fit, minmax(300px, 1fr))'),
+		A2($elm$html$Html$Attributes$style, 'grid-gap', '5px')
+	]);
 var $elm$html$Html$a = _VirtualDom_node('a');
 var $elm$html$Html$Attributes$alt = $elm$html$Html$Attributes$stringProperty('alt');
+var $elm$html$Html$Attributes$class = $elm$html$Html$Attributes$stringProperty('className');
 var $elm$html$Html$Attributes$href = function (url) {
 	return A2(
 		$elm$html$Html$Attributes$stringProperty,
@@ -5355,10 +5361,7 @@ var $author$project$View$linkGrid = function (cards) {
 			[
 				A2(
 				$elm$html$Html$div,
-				_List_fromArray(
-					[
-						$elm$html$Html$Attributes$class('grid')
-					]),
+				$author$project$Styles$grid,
 				A2(
 					$elm$core$List$map,
 					function (card) {

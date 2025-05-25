@@ -18,7 +18,7 @@ linkGrid cards =
     div
         (centeredBlock "85%")
         [ div
-            [ class "grid" ]
+            Styles.grid 
             (List.map
                 (\card -> gridSquare card.titleText card.imageUrl card.linkUrl)
                 cards

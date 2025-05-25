@@ -10,3 +10,11 @@ centeredBlock width =
     [ style "width" width
     , style "margin" "auto"
     ]
+
+
+grid : List (Attribute Msg)
+grid =
+    [ style "display" "grid"
+    , style "grid-template-columns" "repeat(auto-fit, minmax(300px, 1fr))"
+    , style "grid-gap" "5px"
+    ]
