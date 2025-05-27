@@ -186,6 +186,7 @@ blurbStyles =
     , style "border-radius" "20px"
     , style "box-shadow" "2px 4px 5px rgba(0, 0, 0, 0.5)"
     , style "background-color" "#e6e6e6"
+    , style "text-align" "center"
     ]
 
 
@@ -197,14 +198,14 @@ about =
             [ text "Here's what I'm about:" ]
         , div [ class "blurbs" ]
             [ div blurbStyles
-                [ h3 [ style "text-align" "center" ]
+                [ h3 []
                     [ text "Present:" ]
                 , span
                     []
                     [ text presentBlurb ]
                 ]
             , div blurbStyles
-                [ h3 [ style "text-align" "center" ]
+                [ h3 []
                     [ text "Future:" ]
                 , span
                     []

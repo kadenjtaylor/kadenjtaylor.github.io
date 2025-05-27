@@ -5670,7 +5670,8 @@ var $author$project$Main$blurbStyles = _List_fromArray(
 		A2($elm$html$Html$Attributes$style, 'border', '1px solid #333'),
 		A2($elm$html$Html$Attributes$style, 'border-radius', '20px'),
 		A2($elm$html$Html$Attributes$style, 'box-shadow', '2px 4px 5px rgba(0, 0, 0, 0.5)'),
-		A2($elm$html$Html$Attributes$style, 'background-color', '#e6e6e6')
+		A2($elm$html$Html$Attributes$style, 'background-color', '#e6e6e6'),
+		A2($elm$html$Html$Attributes$style, 'text-align', 'center')
 	]);
 var $author$project$Main$futureBlurb = '\nI\'m slowly but surely working my way towards a visual programming interface that I hope will help to\ndemocratize the manipulation of software. The main ideas have been motiviated equally by the specific\nstruggles of people I\'ve seen trying to build/modify/explain/understand software over the last decade\nor so, along with some general ideas about pattern and structure that come from reading G.E.B., watching\nthe Iron Man movies, and taking long walks to think about the ideal way to describe machines made from\npure information.';
 var $elm$html$Html$h3 = _VirtualDom_node('h3');
@@ -5706,10 +5707,7 @@ var $author$project$Main$about = A2(
 						[
 							A2(
 							$elm$html$Html$h3,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'text-align', 'center')
-								]),
+							_List_Nil,
 							_List_fromArray(
 								[
 									$elm$html$Html$text('Present:')
@@ -5729,10 +5727,7 @@ var $author$project$Main$about = A2(
 						[
 							A2(
 							$elm$html$Html$h3,
-							_List_fromArray(
-								[
-									A2($elm$html$Html$Attributes$style, 'text-align', 'center')
-								]),
+							_List_Nil,
 							_List_fromArray(
 								[
 									$elm$html$Html$text('Future:')
