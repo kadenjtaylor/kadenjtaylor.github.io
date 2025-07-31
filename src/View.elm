@@ -10,6 +10,7 @@ type alias LinkCard =
     { titleText : String
     , imageUrl : String
     , linkUrl : String
+    , isDownload : Bool
     }
 
 
@@ -18,20 +19,32 @@ linkGrid cards =
     div
         (centeredBlock "85%")
         [ div
-            Styles.grid 
+            Styles.grid
             (List.map
-                (\card -> gridSquare card.titleText card.imageUrl card.linkUrl)
+                (\card -> gridSquare card.titleText card.imageUrl card.linkUrl card.isDownload)
                 cards
             )
         ]
 
 
-gridSquare : String -> String -> String -> Html Msg
-gridSquare squareTitle imageUrl linkUrl =
+maybeDownload : Bool -> List (Html.Attribute msg)
+maybeDownload isDownload =
+    if isDownload then
+        [ download "" ]
+
+    else
+        []
+
+
+gridSquare : String -> String -> String -> Bool -> Html Msg
+gridSquare squareTitle imageUrl linkUrl isDownload =
     div
         [ class "square"
         ]
-        [ a [ style "width" "100%", style "height" "100%", style "padding" "10px", href linkUrl ]
+        [ a
+            ([ style "width" "100%", style "height" "100%", style "padding" "10px", href linkUrl ]
+                ++ maybeDownload isDownload
+            )
             [ img
                 [ src imageUrl
                 , alt squareTitle

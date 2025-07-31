@@ -219,10 +219,10 @@ projectGrid : ProjectDirectory -> Html Msg
 projectGrid ps =
     let
         externalSquares =
-            List.map (\p -> LinkCard p.title p.imgUrl p.url) ps.external
+            List.map (\p -> LinkCard p.title p.imgUrl p.url False) ps.external
 
         writeupSquares =
-            List.map (\w -> LinkCard w.title w.imgUrl w.url) ps.writeups
+            List.map (\w -> LinkCard w.title w.imgUrl w.url False) ps.writeups
     in
     div []
         [ h2 [ style "text-align" "center" ]

@@ -113,8 +113,8 @@ resources : Html Msg
 resources =
     div []
         [ View.linkGrid
-            [ View.LinkCard "OnShape Document" cadImageUrl onShapeLink
-            , View.LinkCard "STL Files" "resources/abarth_hatchback_switch/prototype_stl.png" "resources/abarth_hatchback_switch/switch_parts.stl"
+            [ View.LinkCard "OnShape Document" cadImageUrl onShapeLink False
+            , View.LinkCard "STL Files" "resources/abarth_hatchback_switch/prototype_stl.png" "resources/abarth_hatchback_switch/switch_parts.stl" True
             ]
         ]
 
