@@ -5562,7 +5562,8 @@ var $author$project$Main$projects = {
 			A3($author$project$Domain$ExternalProject, 'Visualizing Symbolic Manipulation', 'resources/arithmetic_tree.png', 'pages/arithmetic_demo'),
 			A3($author$project$Domain$ExternalProject, 'Making WASM Slideshows in Rust', 'resources/rust_slideshow.png', 'pages/slider_demo'),
 			A3($author$project$Domain$ExternalProject, 'Thinking About Software Clay', 'pages/musings/Paper_Clay_Reality.excalidraw.svg', 'pages/musings/software_doesnt_have_clay.html'),
-			A3($author$project$Domain$ExternalProject, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker')
+			A3($author$project$Domain$ExternalProject, 'Generating My Resume', 'resources/logo_resumaker.png', 'https://github.com/kadenjtaylor/resumaker'),
+			A3($author$project$Domain$ExternalProject, 'Word365', 'resources/logo_word365.svg', 'pages/word365')
 		]),
 	aN: _List_fromArray(
 		[$author$project$Projects$AbarthHatchbackSwitch$project])

@@ -39,6 +39,7 @@ projects =
         , ExternalProject "Making WASM Slideshows in Rust" "resources/rust_slideshow.png" "pages/slider_demo"
         , ExternalProject "Thinking About Software Clay" "pages/musings/Paper_Clay_Reality.excalidraw.svg" "pages/musings/software_doesnt_have_clay.html"
         , ExternalProject "Generating My Resume" "resources/logo_resumaker.png" "https://github.com/kadenjtaylor/resumaker"
+        , ExternalProject "Word365" "resources/logo_word365.svg" "pages/word365"
         ]
     , writeups = [ Projects.AbarthHatchbackSwitch.project ]
     }
